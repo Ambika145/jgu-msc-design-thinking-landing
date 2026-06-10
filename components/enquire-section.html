@@ -1,0 +1,48 @@
+<!-- Enquire Now -->
+<section class="enquire-section" id="enquire">
+  <div class="container">
+    <h2 class="enquire__title">
+      Enquire <span class="enquire__title-accent">Now!</span>
+    </h2>
+    <div class="enquire-panel">
+      <form class="enquire-panel__form" id="mainEnquiryForm" novalidate>
+        <input type="text" name="name" placeholder="Name" class="enquire-panel__input" />
+        <input type="email" name="email" placeholder="Email Address*" class="enquire-panel__input" required />
+        <div class="enquire-panel__phone">
+          <select name="countryCode" class="enquire-panel__select" aria-label="Country code">
+            <option value="+91">+91</option>
+          </select>
+          <input type="tel" name="phone" placeholder="Enter Mobile Number*" class="enquire-panel__input" required />
+        </div>
+        <input type="text" name="otp" placeholder="OTP" class="enquire-panel__input" />
+        <div class="enquire-panel__row">
+          <select name="state" class="enquire-panel__select enquire-panel__select--full" required>
+            <option value="">Current State*</option>
+          </select>
+          <select name="city" class="enquire-panel__select enquire-panel__select--full" required>
+            <option value="">Current City*</option>
+          </select>
+        </div>
+        <select name="course" class="enquire-panel__select enquire-panel__select--full" required>
+          <option value="">Select Course*</option>
+          <option value="msc-dtis">M.Sc. in Design Thinking, Innovation &amp; Strategy</option>
+        </select>
+        <label class="enquire-panel__checkbox">
+          <input type="checkbox" name="consent" required />
+          <span>By submitting this form, I agree to be contacted by JGU Online and accept the privacy policy regarding programme information.</span>
+        </label>
+        <button type="submit" class="btn btn--submit">SUBMIT</button>
+      </form>
+      <div class="enquire-panel__content">
+        <span class="enquire-panel__eyebrow">Admissions 2026</span>
+        <h3>Let&rsquo;s connect and shape your path at JGU!</h3>
+        <p>Reach out to know more about programmes, admissions, and opportunities.</p>
+        <ul class="enquire-panel__highlights">
+          <li>Expert academic counselling</li>
+          <li>Flexible online learning</li>
+          <li>Global recognition &amp; rankings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
