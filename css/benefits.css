@@ -5,9 +5,9 @@
 .benefits {
   position: relative;
   background:
-    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(106, 13, 173, 0.06) 0%, transparent 55%),
-    linear-gradient(180deg, #f3f4ff 0%, #f8f7ff 42%, #ffffff 100%);
-  padding: 88px 0 96px;
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(106, 13, 173, 0.05) 0%, transparent 55%),
+    linear-gradient(180deg, #f3f4ff 0%, #f8f7ff 55%, #ffffff 100%);
+  padding: 64px 0 72px;
   overflow: hidden;
 }
 
@@ -19,32 +19,38 @@
 
 .benefits__head {
   text-align: center;
-  margin-bottom: 52px;
+  margin-bottom: 40px;
 }
 
-.benefits__title {
+.benefits__title,
+.benefits__title-accent {
   font-size: clamp(32px, 4.2vw, 44px);
   font-weight: 800;
-  color: #0f1b5c;
   line-height: 1.12;
   letter-spacing: -0.03em;
-}
-
-.benefits__title-accent {
-  background: linear-gradient(90deg, #6a0dad 0%, #1e40af 48%, #06b6d4 100%);
+  background: linear-gradient(90deg, #1a1067 0%, #3b3db8 42%, #2563eb 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.benefits__title {
+  color: transparent;
+}
+
 .benefits__carousel {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   margin-bottom: 0;
+  padding-left: max(24px, calc((100vw - 1320px) / 2 + 24px));
+  padding-right: max(24px, calc((100vw - 1320px) / 2 + 24px));
+  box-sizing: border-box;
 }
 
 /* Slider shell */
 .benefits-slider {
-  --benefit-card-width: 300px;
-  --benefit-card-height: 344px;
+  --benefit-card-width: 440px;
+  --benefit-card-height: 504px;
   --benefit-gap: 24px;
 
   display: flex;
@@ -55,6 +61,7 @@
 .benefits-slider__viewport {
   flex: 1;
   min-width: 0;
+  height: var(--benefit-card-height);
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
   border-radius: 4px;
@@ -62,8 +69,19 @@
 
 .benefits-slider__track {
   display: flex;
+  align-items: flex-start;
   gap: var(--benefit-gap);
+  height: var(--benefit-card-height);
   will-change: transform;
+}
+
+.benefits-row {
+  display: contents;
+}
+
+.benefits-row--primary,
+.benefits-row--secondary {
+  display: contents;
 }
 
 /* Navigation arrows */
@@ -111,10 +129,11 @@
   justify-content: flex-end;
   width: var(--benefit-card-width);
   height: var(--benefit-card-height);
-  max-height: 360px;
-  border-radius: 24px;
+  min-height: var(--benefit-card-height);
+  max-height: var(--benefit-card-height);
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 10px 32px rgba(15, 27, 92, 0.12);
+  box-shadow: 0 8px 28px rgba(15, 27, 92, 0.14);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 
@@ -140,8 +159,8 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  min-height: 52%;
-  padding: 28px 22px 26px;
+  min-height: 48%;
+  padding: 24px 22px 26px;
   text-align: left;
 }
 
@@ -154,9 +173,9 @@
   height: 100%;
   background: linear-gradient(
     to top,
-    rgba(10, 20, 90, 0.97) 0%,
-    rgba(10, 20, 90, 0.82) 38%,
-    rgba(10, 20, 90, 0.35) 68%,
+    #0a1a5e 0%,
+    #0a1a5e 42%,
+    rgba(10, 26, 94, 0.55) 62%,
     transparent 100%
   );
   pointer-events: none;
@@ -166,7 +185,7 @@
 .benefit-card__title {
   position: relative;
   max-width: 92%;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.25;
@@ -179,7 +198,7 @@
 
 .benefit-card__text {
   position: relative;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.94);
   line-height: 1.55;
@@ -190,18 +209,26 @@
   text-overflow: ellipsis;
 }
 
-/* Programme block — separated from carousel */
-.benefits__program {
-  margin-top: 72px;
-  padding-top: 72px;
-  border-top: 1px solid rgba(106, 13, 173, 0.1);
+/* Large desktop — equal card sizes in slider */
+@media (min-width: 1280px) {
+  .benefits-slider {
+    --benefit-card-width: 440px;
+    --benefit-card-height: 504px;
+  }
+
+  .benefit-card {
+    width: var(--benefit-card-width);
+    height: var(--benefit-card-height);
+    min-height: var(--benefit-card-height);
+    max-height: var(--benefit-card-height);
+  }
 }
 
 /* Large tablet */
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   .benefits-slider {
-    --benefit-card-width: 280px;
-    --benefit-card-height: 320px;
+    --benefit-card-width: 380px;
+    --benefit-card-height: 435px;
   }
 }
 
@@ -221,8 +248,8 @@
 
   .benefits-slider {
     gap: 14px;
-    --benefit-card-width: 272px;
-    --benefit-card-height: 312px;
+    --benefit-card-width: 356px;
+    --benefit-card-height: 408px;
   }
 
   .benefits-slider__arrow {
@@ -230,14 +257,15 @@
     height: 46px;
   }
 
-  .benefits__program {
-    margin-top: 56px;
-    padding-top: 56px;
-  }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
+  .benefits__carousel {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .benefits .container {
     padding: 0 20px;
   }
@@ -256,8 +284,8 @@
 
   .benefits-slider {
     gap: 10px;
-    --benefit-card-width: min(260px, calc(100vw - 104px));
-    --benefit-card-height: 300px;
+    --benefit-card-width: min(328px, calc(100vw - 104px));
+    --benefit-card-height: 376px;
   }
 
   .benefits-slider__arrow {
@@ -268,9 +296,10 @@
 
   .benefit-card {
     border-radius: 20px;
-    max-height: 300px;
-    height: var(--benefit-card-height);
     width: var(--benefit-card-width);
+    height: var(--benefit-card-height);
+    min-height: var(--benefit-card-height);
+    max-height: var(--benefit-card-height);
   }
 
   .benefit-card__body {
@@ -287,10 +316,6 @@
     -webkit-line-clamp: 3;
   }
 
-  .benefits__program {
-    margin-top: 48px;
-    padding-top: 48px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -305,28 +330,16 @@
 
   .benefits-slider {
     gap: 6px;
-    --benefit-card-width: min(240px, calc(100vw - 88px));
-    --benefit-card-height: 280px;
+    --benefit-card-width: min(304px, calc(100vw - 88px));
+    --benefit-card-height: 349px;
   }
 
   .benefit-card {
-    max-height: 280px;
+    min-height: var(--benefit-card-height);
+    max-height: var(--benefit-card-height);
   }
 
   .benefit-card__title {
     font-size: 15px;
-  }
-
-  .program-info {
-    padding: 20px 14px;
-    border-radius: 20px;
-  }
-
-  .program-info__heading {
-    font-size: 22px;
-  }
-
-  .program-info__campus {
-    min-height: 220px;
   }
 }

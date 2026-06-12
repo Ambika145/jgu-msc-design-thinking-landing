@@ -4,11 +4,26 @@
   var SLIDE_MS = 400;
   var SWIPE_THRESHOLD = 48;
   var CARD_RATIO = 905 / 789;
+  var MAX_CARD_HEIGHT = 580;
+
+  function getTargetCardSize() {
+    var w = window.innerWidth;
+    if (w <= 480) return { width: 304, height: 349 };
+    if (w <= 767) return { width: 328, height: 376 };
+    if (w <= 1024) return { width: 356, height: 408 };
+    if (w <= 1279) return { width: 380, height: 435 };
+    return { width: 440, height: 504 };
+  }
 
   function getCardsPerView() {
     if (window.innerWidth <= 767) return 1;
     if (window.innerWidth <= 1024) return 2;
-    return 4;
+    if (window.innerWidth < 1500) return 2;
+    return 3;
+  }
+
+  function isStaticLayout() {
+    return false;
   }
 
   function BenefitsSlider(root) {
@@ -30,6 +45,7 @@
     this.pendingReset = null;
     this.touchStartX = 0;
     this.touchDeltaX = 0;
+    this.sliderBound = false;
 
     this.onTransitionEnd = this.onTransitionEnd.bind(this);
     this.onResize = this.onResize.bind(this);
@@ -44,6 +60,12 @@
 
   BenefitsSlider.prototype.init = function () {
     if (!this.totalCards) return;
+    window.addEventListener('resize', this.onResize);
+    this.setupMode();
+  };
+
+  BenefitsSlider.prototype.bindSliderEvents = function () {
+    if (this.sliderBound) return;
 
     this.track.addEventListener('transitionend', this.onTransitionEnd);
     this.prevBtn.addEventListener('click', this.onPrev);
@@ -51,9 +73,30 @@
     this.viewport.addEventListener('touchstart', this.onTouchStart, { passive: true });
     this.viewport.addEventListener('touchmove', this.onTouchMove, { passive: false });
     this.viewport.addEventListener('touchend', this.onTouchEnd);
-    window.addEventListener('resize', this.onResize);
+    this.sliderBound = true;
+  };
 
+  BenefitsSlider.prototype.enableStatic = function () {
+    this.root.classList.add('benefits-slider--static');
+    this.clearClones();
+    this.track.style.transition = 'none';
+    this.track.style.transform = 'none';
+    this.isAnimating = false;
+    this.pendingReset = null;
+  };
+
+  BenefitsSlider.prototype.enableSlider = function () {
+    this.root.classList.remove('benefits-slider--static');
+    this.bindSliderEvents();
     this.rebuild();
+  };
+
+  BenefitsSlider.prototype.setupMode = function () {
+    if (isStaticLayout()) {
+      this.enableStatic();
+      return;
+    }
+    this.enableSlider();
   };
 
   BenefitsSlider.prototype.getSlideOffsets = function () {
@@ -108,6 +151,11 @@
   };
 
   BenefitsSlider.prototype.rebuild = function () {
+    if (isStaticLayout()) {
+      this.enableStatic();
+      return;
+    }
+
     this.cardsPerView = getCardsPerView();
     this.slideOffsets = this.getSlideOffsets();
     this.pageIndex = Math.min(this.pageIndex, this.slideOffsets.length - 1);
@@ -128,9 +176,24 @@
   BenefitsSlider.prototype.updateDimensions = function () {
     var styles = window.getComputedStyle(this.track);
     this.gap = parseFloat(styles.gap) || 24;
-    this.cardWidth =
+
+    var fitWidth =
       (this.viewport.offsetWidth - (this.cardsPerView - 1) * this.gap) / this.cardsPerView;
-    var cardHeight = Math.min(Math.round(this.cardWidth * CARD_RATIO), 360);
+    var target = getTargetCardSize();
+    var neededWidth = target.width * this.cardsPerView + (this.cardsPerView - 1) * this.gap;
+
+    if (neededWidth <= this.viewport.offsetWidth) {
+      this.cardWidth = target.width;
+      var cardHeight = target.height;
+    } else {
+      this.cardWidth = fitWidth;
+      var cardHeight = Math.round(this.cardWidth * CARD_RATIO);
+    }
+
+    if (cardHeight > MAX_CARD_HEIGHT) {
+      cardHeight = MAX_CARD_HEIGHT;
+      this.cardWidth = Math.round(cardHeight / CARD_RATIO);
+    }
 
     this.root.style.setProperty('--benefit-card-width', this.cardWidth + 'px');
     this.root.style.setProperty('--benefit-card-height', cardHeight + 'px');
@@ -155,7 +218,7 @@
   };
 
   BenefitsSlider.prototype.onPrev = function () {
-    if (this.isAnimating) return;
+    if (isStaticLayout() || this.isAnimating) return;
     this.isAnimating = true;
 
     if (this.pageIndex === 0) {
@@ -168,7 +231,7 @@
   };
 
   BenefitsSlider.prototype.onNext = function () {
-    if (this.isAnimating) return;
+    if (isStaticLayout() || this.isAnimating) return;
     this.isAnimating = true;
 
     var lastPage = this.slideOffsets.length - 1;
@@ -194,15 +257,25 @@
   };
 
   BenefitsSlider.prototype.onResize = function () {
-    var nextCardsPerView = getCardsPerView();
-
-    if (nextCardsPerView !== this.cardsPerView) {
-      this.rebuild();
+    if (isStaticLayout()) {
+      this.enableStatic();
       return;
     }
 
-    this.updateDimensions();
-    this.goToPage(this.pageIndex, false);
+    var nextCardsPerView = getCardsPerView();
+
+    if (!this.root.classList.contains('benefits-slider--static')) {
+      if (nextCardsPerView !== this.cardsPerView) {
+        this.rebuild();
+        return;
+      }
+
+      this.updateDimensions();
+      this.goToPage(this.pageIndex, false);
+      return;
+    }
+
+    this.enableSlider();
   };
 
   BenefitsSlider.prototype.onTouchStart = function (event) {

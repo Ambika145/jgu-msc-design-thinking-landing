@@ -1,0 +1,112 @@
+/* =============================================
+   Responsive QA — targeted fixes only
+   (Hero, Benefits, Accreditations unchanged)
+   ============================================= */
+
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Programme overview: fluid heading */
+.program-info__heading {
+  font-size: clamp(24px, 2.8vw, 38px);
+}
+
+/* Tablet landscape: programme 2-column */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .program-info {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 3vw, 40px);
+  }
+
+  .program-info__visuals {
+    max-width: none;
+    width: 100%;
+  }
+
+  .program-info__campus {
+    min-height: clamp(320px, 42vw, 400px);
+  }
+
+  .program-info__heading {
+    font-size: clamp(22px, 2.6vw, 30px);
+  }
+
+  .program-info__text p {
+    font-size: clamp(14px, 1.6vw, 16px);
+  }
+}
+
+/* FAQ: single column on small tablets */
+@media (max-width: 900px) {
+  .faq__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Enquire + comparison — mobile only */
+@media (max-width: 767px) {
+  .enquire-panel__row {
+    grid-template-columns: 1fr;
+  }
+
+  .enquire-panel .btn--submit {
+    width: 100%;
+    min-height: 48px;
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .enquire-panel__content p {
+    max-width: none;
+  }
+
+  .comparison-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 374px) {
+  .program-info__heading {
+    font-size: 22px;
+  }
+
+  .program-info__campus {
+    min-height: 240px;
+  }
+
+  .program-info__illustration {
+    min-height: 160px;
+  }
+
+  .fee-table {
+    min-width: 480px;
+  }
+
+  .comparison__card {
+    padding: 24px 14px;
+  }
+
+  .faq-card__trigger {
+    padding: 16px 14px;
+    font-size: 13px;
+    gap: 12px;
+  }
+
+  .site-footer__inner {
+    padding: 20px 12px 28px;
+  }
+}

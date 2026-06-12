@@ -7,8 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/benefits.css" />
+  <link rel="stylesheet" href="css/style.css?v=20260623" />
+  <link rel="stylesheet" href="css/benefits.css?v=20260621" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260621" />
 </head>
 <body>
 
@@ -27,8 +28,7 @@
         <div class="hero__content">
           <h1 class="hero__title">
             <span class="hero__title-line">M.Sc. in</span>
-            <span class="hero__title-line hero__title-line--purple">Design Thinking,</span>
-            <span class="hero__title-line hero__title-line--gradient">Innovation &amp; Strategy</span>
+            <span class="hero__title-line hero__title-gradient">Design Thinking,<br />Innovation &amp; Strategy</span>
           </h1>
           <p class="hero__subtitle">
             UNLEASH YOUR CREATIVE POTENTIAL WITH M.Sc. IN DESIGN THINKING, INNOVATION &amp; STRATEGY
@@ -53,7 +53,7 @@
             </div>
             <label class="enquiry-card__checkbox">
               <input type="checkbox" name="consent" required />
-              <span>By clicking Submit, I authorize JGU Online to contact me via Email, SMS, WhatsApp and Voice Call regarding programme information. I have read and agree to the Privacy Policy. I confirm that I am not registered on DNC/NDNC.</span>
+              <span>By entering these details, I agree that JGU Online and its associates may contact me with updates and notifications via Email, SMS, WhatsApp, and Voice Call as per the Privacy Policy. This consent overrides any registration under DNC/NDNC.</span>
             </label>
             <button type="submit" class="btn btn--submit">SUBMIT</button>
           </form>
@@ -97,6 +97,7 @@
 
         <div class="benefits-slider__viewport">
           <div class="benefits-slider__track">
+            <div class="benefits-row benefits-row--primary">
             <article class="benefit-card">
               <img
                 src="images/Comprehensive%20Curriculum.png"
@@ -141,7 +142,9 @@
                 <p class="benefit-card__text">Engage with real-world case studies, online simulations, and hands-on projects using tools like Figma and licensed content from HBSP, Ivey, and Columbia.</p>
               </div>
             </article>
+            </div>
 
+            <div class="benefits-row benefits-row--secondary">
             <article class="benefit-card">
               <img
                 src="images/Flexible%20Online%20Delivery.png"
@@ -201,6 +204,22 @@
                 <p class="benefit-card__text">Connect with a diverse community of professionals, industry experts, and peers to build valuable relationships and collaborations.</p>
               </div>
             </article>
+
+            <article class="benefit-card">
+              <img
+                src="images/Recognition%20and%20Value.png"
+                alt=""
+                class="benefit-card__img"
+                width="789"
+                height="905"
+                loading="lazy"
+              />
+              <div class="benefit-card__body">
+                <h3 class="benefit-card__title">Recognition and Value</h3>
+                <p class="benefit-card__text">Earn a postgraduate degree recognised as fully equal to on-campus degrees, enhancing your professional credibility.</p>
+              </div>
+            </article>
+            </div>
           </div>
         </div>
 
@@ -215,8 +234,12 @@
         </button>
       </div>
       </div>
+    </div>
+  </section>
 
-      <div class="benefits__program">
+  <!-- PROGRAMME OVERVIEW -->
+  <section class="program-overview" id="program-overview">
+    <div class="container">
       <div class="program-info">
         <div class="program-info__visuals">
           <img
@@ -243,15 +266,17 @@
           />
         </div>
         <div class="program-info__text">
-          <p class="program-info__eyebrow">Programme Overview</p>
-          <h3 class="program-info__heading">
-            M.Sc. in Design Thinking,
-            <span class="program-info__heading-accent">Innovation &amp; Strategy</span>
-          </h3>
-          <p>Elevate your innovation and strategic capabilities with the online M.Sc. in Design Thinking, Innovation &amp; Strategy, a <strong>comprehensive one-year online programme</strong> designed for emerging leaders and creative professionals. This prestigious Programme integrates advanced design thinking methodologies with strategic innovation frameworks to equip you with the tools to solve complex business challenges and drive transformative change across industries.</p>
-          <p>Through immersive learning modules, real-world case studies, and mentorship from global experts, you will develop critical skills in creative problem-solving, strategic decision-making, and innovation leadership. This programme is not just a degree&mdash;it is a catalyst for career advancement and a gateway to leadership roles in innovation-driven organizations worldwide.</p>
+          <h2 class="program-info__heading">
+            <span class="program-info__heading-gradient">
+              <span>M.Sc. in Design Thinking,</span>
+              <span>Innovation &amp; Strategy</span>
+            </span>
+          </h2>
+          <div class="program-info__body">
+            <p>Elevate your innovation and strategic capabilities with the online M.Sc. in Design Thinking, Innovation &amp; Strategy, a <strong>comprehensive one-year online programme</strong> designed for emerging leaders and creative professionals. This prestigious Programme integrates advanced design thinking methodologies with strategic innovation frameworks to equip you with the tools to solve complex business challenges and drive transformative change across industries.</p>
+            <p>Through immersive learning modules, real-world case studies, and mentorship from global experts, you will develop critical skills in creative problem-solving, strategic decision-making, and innovation leadership. This programme is not just a degree&mdash;it is a catalyst for career advancement and a gateway to leadership roles in innovation-driven organizations worldwide.</p>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </section>
@@ -330,7 +355,7 @@
   <!-- SKILLS -->
   <section class="skills" id="skills">
     <div class="container">
-      <h2 class="skills__title">Skills You&rsquo;ll <span class="skills__title-accent">Acquire</span></h2>
+      <h2 class="skills__title">Skills You&rsquo;ll Acquire</h2>
       <div class="skills__grid">
         <article class="skill-item">
           <div class="skill-item__head">
@@ -422,8 +447,7 @@
     <div class="container">
       <div class="comparison__card">
         <h2 class="comparison__title">
-          How does the <span class="text-navy">M.Sc. Design Thinking, Innovation &amp; Strategy</span>
-          <span class="text-purple">at JGU Online</span> stand apart?
+          How does the <span class="comparison__title-accent">M.Sc. Design Thinking, Innovation &amp; Strategy at JGU Online</span> stand apart?
         </h2>
         <div class="comparison-table" role="table">
           <div class="comparison-table__head" role="row">
@@ -459,7 +483,7 @@
           <div class="comparison-table__row" role="row">
             <div class="comparison-table__feature" role="rowheader">Advanced Digital Learning Ecosystem</div>
             <div role="cell">Access to cutting-edge digital tools such as Figma, AI platforms, and prototyping software.</div>
-            <div role="cell">Limited digital tool training; mostly traditional learning materials.</div>
+            <div role="cell">Limited digital tool training, mostly traditional learning materials.</div>
           </div>
           <div class="comparison-table__row" role="row">
             <div class="comparison-table__feature" role="rowheader">Certification &amp; Micro-Credentials</div>
@@ -475,9 +499,6 @@
   <section class="career" id="career">
     <div class="container">
       <div class="career__panel">
-        <div class="career__media" aria-hidden="true">
-          <div class="career__overlay"></div>
-        </div>
         <div class="career__body">
           <h2 class="career__title">
             <span class="career__title-accent">Career Outcomes</span>
@@ -554,7 +575,7 @@
     <div class="container faculty__inner">
       <header class="faculty__head">
         <h2 class="faculty__title">
-          Meet <span class="faculty__title-accent">Our</span> Faculty
+          Meet <span class="faculty__title-accent">Our</span> <span class="faculty__title-faculty">Faculty</span>
         </h2>
       </header>
       <div class="faculty__grid">
@@ -637,18 +658,17 @@
   <!-- ACCREDITATIONS -->
   <section class="accreditations" id="accreditations">
     <div class="accreditations__stage">
-      <div class="accreditations__campus">
-        <img
-          src="images/bg picture.png"
-          alt="JGU campus landscape"
-          class="accreditations__campus-photo"
-          loading="lazy"
-        />
-      </div>
-      <h2 class="accreditations__title">
-        Recognitions and <span class="accreditations__title-accent">Accreditations</span>
-      </h2>
-      <div class="accreditations__cards">
+      <div class="accreditations__backdrop">
+        <div class="accreditations__campus">
+          <img
+            src="images/bg picture.png"
+            alt="JGU campus landscape"
+            class="accreditations__campus-photo"
+            loading="lazy"
+          />
+        </div>
+        <h2 class="accreditations__title">Recognitions and Accreditations</h2>
+        <div class="accreditations__cards">
         <article class="accreditation-card accreditation-card--side">
           <div class="accreditation-card__media">
             <img
@@ -694,6 +714,7 @@
             />
           </div>
         </article>
+        </div>
       </div>
     </div>
   </section>
@@ -708,43 +729,43 @@
       <div class="faq__grid" id="faqAccordion">
         <article class="faq-card is-open" data-faq>
           <button type="button" class="faq-card__trigger" aria-expanded="true">
-            <span>What is the eligibility criteria for the M.Sc. programme?</span>
+            <span>Who is eligible to apply for the M.Sc. in Design Thinking, Innovation &amp; Strategy at JGU Online?</span>
             <span class="faq-card__icon" aria-hidden="true"></span>
           </button>
           <div class="faq-card__panel">
-            <p>Applicants must hold a bachelor&rsquo;s degree from a recognized university. Working professionals from design, business, technology, and related fields are encouraged to apply.</p>
+            <p>Applicants must hold a bachelor&rsquo;s degree in any discipline with a minimum qualifying percentage (typically 50%). Working professionals, design enthusiasts, and recent graduates are encouraged to apply.</p>
           </div>
         </article>
         <article class="faq-card" data-faq>
           <button type="button" class="faq-card__trigger" aria-expanded="false">
-            <span>Is the degree internationally recognized?</span>
+            <span>Is the degree recognized internationally?</span>
             <span class="faq-card__icon" aria-hidden="true"></span>
           </button>
           <div class="faq-card__panel">
-            <p>Yes. O.P. Jindal Global University is a recognized institution with global rankings and accreditations.</p>
+            <p>Yes, the Programme is accredited by UGC and WES, ensuring global academic recognition and alignment with international standards.</p>
           </div>
         </article>
         <article class="faq-card" data-faq>
           <button type="button" class="faq-card__trigger" aria-expanded="false">
-            <span>What digital tools will I learn?</span>
+            <span>What digital and design tools will I learn?</span>
             <span class="faq-card__icon" aria-hidden="true"></span>
           </button>
           <div class="faq-card__panel">
-            <p>The programme includes hands-on training with Figma, prototyping tools, AI platforms, and innovation frameworks.</p>
+            <p>You will gain hands-on experience with leading tools such as Figma, AI-enabled platforms, and rapid prototyping software.</p>
           </div>
         </article>
         <article class="faq-card" data-faq>
           <button type="button" class="faq-card__trigger" aria-expanded="false">
-            <span>What makes this programme unique?</span>
+            <span>What makes this programme unique at JGU?</span>
             <span class="faq-card__icon" aria-hidden="true"></span>
           </button>
           <div class="faq-card__panel">
-            <p>It combines interdisciplinary curriculum, applied learning, expert mentorship, and a fully flexible online format.</p>
+            <p>Key differentiators include global faculty and mentors, industry-aligned curriculum co-created with leaders like UXReactor and T-Hub, real-world innovation labs, micro-credentials, and exclusive career support.</p>
           </div>
         </article>
         <article class="faq-card" data-faq>
           <button type="button" class="faq-card__trigger" aria-expanded="false">
-            <span>What student support is available?</span>
+            <span>How are students supported for placements and career growth?</span>
             <span class="faq-card__icon" aria-hidden="true"></span>
           </button>
           <div class="faq-card__panel">
@@ -753,7 +774,7 @@
         </article>
         <article class="faq-card" data-faq>
           <button type="button" class="faq-card__trigger" aria-expanded="false">
-            <span>Are there projects or apprenticeships?</span>
+            <span>Are there any live projects or apprenticeships?</span>
             <span class="faq-card__icon" aria-hidden="true"></span>
           </button>
           <div class="faq-card__panel">
@@ -795,19 +816,13 @@
           </select>
           <label class="enquire-panel__checkbox">
             <input type="checkbox" name="consent" required />
-            <span>By submitting this form, I agree to be contacted by JGU Online and accept the privacy policy regarding programme information.</span>
+            <span>By entering these details, I agree that JGU Online and its associates may contact me with updates and notifications via Email, SMS, WhatsApp, and Voice Call as per the Privacy Policy. This consent overrides any registration under DNC/NDNC.</span>
           </label>
           <button type="submit" class="btn btn--submit">SUBMIT</button>
         </form>
         <div class="enquire-panel__content">
-          <span class="enquire-panel__eyebrow">Admissions 2026</span>
           <h3>Let&rsquo;s connect and shape your path at JGU!</h3>
           <p>Reach out to know more about programmes, admissions, and opportunities.</p>
-          <ul class="enquire-panel__highlights">
-            <li>Expert academic counselling</li>
-            <li>Flexible online learning</li>
-            <li>Global recognition &amp; rankings</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -819,7 +834,7 @@
     </div>
   </footer>
 
-  <script src="js/benefits-slider.js" defer></script>
+  <script src="js/benefits-slider.js?v=20260621" defer></script>
   <script src="js/script.js"></script>
 </body>
 </html>
