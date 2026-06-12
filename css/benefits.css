@@ -7,7 +7,7 @@
   background:
     radial-gradient(ellipse 70% 45% at 50% 0%, rgba(106, 13, 173, 0.05) 0%, transparent 55%),
     linear-gradient(180deg, #f3f4ff 0%, #f8f7ff 55%, #ffffff 100%);
-  padding: 64px 0 72px;
+  padding: 48px 0 48px;
   overflow: hidden;
 }
 
@@ -19,7 +19,7 @@
 
 .benefits__head {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 28px;
 }
 
 .benefits__title,
@@ -49,13 +49,13 @@
 
 /* Slider shell */
 .benefits-slider {
-  --benefit-card-width: 440px;
-  --benefit-card-height: 504px;
-  --benefit-gap: 24px;
+  --benefit-card-width: 470px;
+  --benefit-card-height: 538px;
+  --benefit-gap: 20px;
 
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .benefits-slider__viewport {
@@ -212,8 +212,8 @@
 /* Large desktop — equal card sizes in slider */
 @media (min-width: 1280px) {
   .benefits-slider {
-    --benefit-card-width: 440px;
-    --benefit-card-height: 504px;
+    --benefit-card-width: 470px;
+    --benefit-card-height: 538px;
   }
 
   .benefit-card {
@@ -227,19 +227,19 @@
 /* Large tablet */
 @media (max-width: 1279px) {
   .benefits-slider {
-    --benefit-card-width: 380px;
-    --benefit-card-height: 435px;
+    --benefit-card-width: 400px;
+    --benefit-card-height: 460px;
   }
 }
 
 /* Tablet */
 @media (max-width: 1024px) {
   .benefits {
-    padding: 72px 0 80px;
+    padding: 48px 0 52px;
   }
 
   .benefits__head {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 
   .benefits__title {
@@ -247,9 +247,9 @@
   }
 
   .benefits-slider {
-    gap: 14px;
-    --benefit-card-width: 356px;
-    --benefit-card-height: 408px;
+    gap: 12px;
+    --benefit-card-width: 368px;
+    --benefit-card-height: 422px;
   }
 
   .benefits-slider__arrow {
@@ -271,11 +271,11 @@
   }
 
   .benefits {
-    padding: 64px 0 72px;
+    padding: 40px 0 44px;
   }
 
   .benefits__head {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .benefits__title {
@@ -284,8 +284,8 @@
 
   .benefits-slider {
     gap: 10px;
-    --benefit-card-width: min(328px, calc(100vw - 104px));
-    --benefit-card-height: 376px;
+    --benefit-card-width: min(340px, calc(100vw - 104px));
+    --benefit-card-height: 392px;
   }
 
   .benefits-slider__arrow {
@@ -330,8 +330,8 @@
 
   .benefits-slider {
     gap: 6px;
-    --benefit-card-width: min(304px, calc(100vw - 88px));
-    --benefit-card-height: 349px;
+    --benefit-card-width: min(316px, calc(100vw - 88px));
+    --benefit-card-height: 364px;
   }
 
   .benefit-card {

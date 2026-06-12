@@ -8,11 +8,11 @@
 
   function getTargetCardSize() {
     var w = window.innerWidth;
-    if (w <= 480) return { width: 304, height: 349 };
-    if (w <= 767) return { width: 328, height: 376 };
-    if (w <= 1024) return { width: 356, height: 408 };
-    if (w <= 1279) return { width: 380, height: 435 };
-    return { width: 440, height: 504 };
+    if (w <= 480) return { width: 316, height: 364 };
+    if (w <= 767) return { width: 340, height: 392 };
+    if (w <= 1024) return { width: 368, height: 422 };
+    if (w <= 1279) return { width: 400, height: 460 };
+    return { width: 470, height: 538 };
   }
 
   function getCardsPerView() {
