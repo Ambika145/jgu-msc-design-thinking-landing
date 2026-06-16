@@ -273,8 +273,8 @@ button {
     #00b8d4 100%
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
   color: transparent;
 }
