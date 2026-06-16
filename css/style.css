@@ -975,6 +975,9 @@ button {
 
 /* Career outcomes */
 .career {
+  --career-card-min-h: 236px;
+  --career-gap: 14px;
+  --career-visible-rows: 2;
   background: transparent;
   padding: 64px 0;
 }
@@ -983,7 +986,10 @@ button {
   position: relative;
   border-radius: 44px;
   overflow: hidden;
-  min-height: 520px;
+  min-height: calc(
+    var(--career-visible-rows) * var(--career-card-min-h) +
+    (var(--career-visible-rows) - 1) * var(--career-gap) + 88px
+  );
   background: url('../images/bg%20image%20(5).png') center / cover no-repeat;
 }
 
@@ -995,14 +1001,15 @@ button {
   gap: 28px;
   align-items: center;
   padding: 44px 40px 44px 48px;
-  min-height: 520px;
+  min-height: auto;
 }
 
 .career__title {
-  font-size: clamp(26px, 2.4vw, 34px);
+  font-size: clamp(32px, 3.2vw, 44px);
   font-weight: 800;
-  line-height: 1.28;
+  line-height: 1.22;
   letter-spacing: -0.02em;
+  align-self: center;
 }
 
 .career__title-accent {
@@ -1017,9 +1024,14 @@ button {
 }
 
 .career__scroll {
+  overflow-x: hidden;
   overflow-y: auto;
-  max-height: 520px;
+  max-height: calc(
+    var(--career-visible-rows) * var(--career-card-min-h) +
+    (var(--career-visible-rows) - 1) * var(--career-gap)
+  );
   padding-right: 10px;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--purple-bright) rgba(255, 255, 255, 0.2);
 }
@@ -1042,9 +1054,16 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+  align-items: stretch;
 }
 
 .outcome-card {
+  display: flex;
+  flex-direction: column;
+  height: var(--career-card-min-h);
+  min-height: var(--career-card-min-h);
+  max-height: var(--career-card-min-h);
+  overflow: hidden;
   background: var(--white);
   border-radius: 20px;
   padding: 20px 18px;
@@ -1067,9 +1086,15 @@ button {
 }
 
 .outcome-card__text {
+  flex: 1;
+  min-height: 0;
   font-size: 12px;
   line-height: 1.55;
   color: var(--gray-body);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
 
 /* Faculty */
@@ -1950,6 +1975,10 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .career {
+    --career-visible-rows: 3;
+  }
+
   .faculty__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2112,14 +2141,38 @@ button {
     gap: 32px 28px;
   }
   .brochure-cta { grid-template-columns: 1fr; }
+  .career {
+    --career-card-min-h: 220px;
+    --career-visible-rows: 3;
+  }
+
   .career__body {
     grid-template-columns: 1fr;
     gap: 32px;
     padding: 36px 32px;
     min-height: auto;
+    align-items: stretch;
+  }
+
+  .career__title {
+    font-size: clamp(28px, 3.6vw, 36px);
+    text-align: center;
+    align-self: center;
+    max-width: 36ch;
+    margin: 0 auto;
   }
 
   .career__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .career__scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(
+      var(--career-visible-rows) * var(--career-card-min-h) +
+      (var(--career-visible-rows) - 1) * var(--career-gap)
+    );
+    padding-right: 10px;
+  }
   .faculty__head {
     margin-bottom: 44px;
   }
@@ -2699,6 +2752,9 @@ button {
 
   .career {
     padding: 56px 0;
+    --career-card-min-h: 210px;
+    --career-gap: 12px;
+    --career-visible-rows: 3;
   }
 
   .career__panel {
@@ -2711,18 +2767,26 @@ button {
   }
 
   .career__title {
-    font-size: 24px;
+    font-size: clamp(26px, 6.5vw, 32px);
+    text-align: center;
+    align-self: center;
+    max-width: 34ch;
+    margin: 0 auto;
   }
 
   .career__grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--career-gap);
   }
 
   .career__scroll {
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(
+      var(--career-visible-rows) * var(--career-card-min-h) +
+      (var(--career-visible-rows) - 1) * var(--career-gap)
+    );
+    padding-right: 8px;
   }
 
   .outcome-card {
@@ -3047,6 +3111,7 @@ button {
 
   .career {
     padding: 48px 0;
+    --career-card-min-h: 196px;
   }
 
   .faculty {
