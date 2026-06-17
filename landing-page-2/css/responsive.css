@@ -1,0 +1,17 @@
+/* landing-page-2 responsive tweaks
+   --------------------------------
+   Base responsive behavior comes from:
+     ../landing-template/css/responsive.css
+
+   Add ONLY page-2 specific media query overrides here.
+*/
+
+/* Example: hero spacing tweak for very small phones on page 2 only */
+/*
+@media (max-width: 374px) {
+  .hero__subtitle {
+    font-size: 13px;
+  }
+}
+*/
+

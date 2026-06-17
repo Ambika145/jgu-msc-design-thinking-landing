@@ -155,7 +155,7 @@ button {
 }
 
 .hero__container {
-  padding-bottom: 0;
+  padding-bottom: 32px;
   overflow: visible;
 }
 
@@ -164,7 +164,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   padding-top: 0;
 }
 
@@ -221,22 +221,24 @@ button {
   display: grid;
   grid-template-columns: 1fr minmax(300px, 400px);
   grid-template-areas: 'content form';
-  align-items: center;
+  align-items: start;
   column-gap: 28px;
   min-height: auto;
   position: relative;
+  margin-top: -8px;
 }
 
 .hero__content {
   grid-area: content;
-  align-self: center;
-  margin-bottom: 16px;
+  align-self: start;
+  margin-bottom: 8px;
   padding-bottom: 0;
   max-width: 560px;
   min-width: 0;
   position: relative;
   z-index: 3;
   overflow: visible;
+  margin-top: 56px;
 }
 
 .hero__title {
@@ -308,8 +310,8 @@ button {
 .hero__image-wrap {
   position: absolute;
   left: clamp(405px, 34%, 647px);
-  bottom: -42px;
-  margin-bottom: -17px;
+  bottom: -25px;
+  margin-bottom: -5px;
   z-index: 2;
   line-height: 0;
   pointer-events: none;
@@ -328,14 +330,22 @@ button {
   grid-area: form;
   justify-self: end;
   align-self: start;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(140deg, #231990 0%, #5f23a8 53%, #1e5ebd 72%, #00bfa5 100%);
   border-radius: 20px;
-  padding: 32px 28px 28px;
+  padding: 24px 22px 20px;
   width: 100%;
   max-width: 400px;
-  margin-bottom: 40px;
-  z-index: 3;
+  margin-top: -20px;
+  margin-bottom: 96px;
+  z-index: 2;
   box-shadow: 0 18px 52px rgba(46, 8, 84, 0.24);
+}
+
+.enquiry-card--hero .enquiry-card__title {
+  margin-bottom: 16px;
+  font-size: 24px;
 }
 
 .enquiry-card__title {
@@ -347,12 +357,44 @@ button {
   margin-bottom: 24px;
   text-transform: uppercase;
   line-height: 1.1;
+  flex-shrink: 0;
 }
 
 .enquiry-card__form {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.enquiry-card--hero .enquiry-card__form {
+  overflow-y: auto;
+  max-height: 340px;
+  gap: 10px;
+  padding-right: 8px;
+  margin-right: -4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.15);
+}
+
+.enquiry-card--hero .enquiry-card__input,
+.enquiry-card--hero .enquiry-card__select {
+  padding: 12px 14px;
+}
+
+.enquiry-card--hero .enquiry-card__form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.enquiry-card--hero .enquiry-card__form::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+.enquiry-card--hero .enquiry-card__form::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .enquiry-card__input,
@@ -398,6 +440,21 @@ button {
   flex: 1;
 }
 
+.enquiry-card__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.enquiry-card__select--full {
+  width: 100%;
+}
+
+.enquiry-card__select option {
+  color: #111827;
+  background: var(--white);
+}
+
 .enquiry-card__checkbox {
   display: flex;
   gap: 8px;
@@ -407,6 +464,11 @@ button {
   color: rgba(255, 255, 255, 0.95);
   line-height: 1.4;
   margin: 6px 0 8px;
+}
+
+.enquiry-card--hero .enquiry-card__checkbox {
+  margin: 4px 0 4px;
+  font-size: 9px;
 }
 
 .enquiry-card__checkbox input {
@@ -420,10 +482,10 @@ button {
 .enquiry-card--hero .btn--submit {
   background: linear-gradient(90deg, #ffeb3b 0%, #ffc107 100%);
   color: #000000;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  padding: 16px;
+  padding: 14px;
   border-radius: 10px;
   margin-top: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -443,8 +505,8 @@ button {
   display: flex;
   align-items: stretch;
   position: relative;
-  z-index: 1;
-  margin-top: -9px;
+  z-index: 3;
+  margin-top: -40px;
 }
 
 .info-bar__inner {
@@ -1930,13 +1992,14 @@ button {
       "content content"
       "image form";
     min-height: auto;
-    gap: 24px 20px;
+    gap: 16px 20px;
+    margin-top: 0;
   }
 
   .hero__content {
     grid-area: content;
     max-width: none;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     padding-bottom: 0;
   }
 
@@ -1963,8 +2026,13 @@ button {
     width: 100%;
     max-width: 380px;
     justify-self: center;
-    margin-bottom: 24px;
-    padding: 32px 28px 28px;
+    margin-top: 0;
+    margin-bottom: 48px;
+    padding: 24px 22px 20px;
+  }
+
+  .info-bar {
+    margin-top: 0;
   }
 
   .highlights__grid {
@@ -2021,13 +2089,13 @@ button {
     grid-template-areas:
       "content content"
       "image form";
-    gap: 24px 20px;
+    gap: 16px 20px;
   }
 
   .hero__content {
     grid-area: content;
     max-width: none;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     padding-bottom: 0;
   }
 
@@ -2049,7 +2117,8 @@ button {
     width: 100%;
     max-width: 380px;
     justify-self: center;
-    margin-bottom: 24px;
+    margin-top: 0;
+    margin-bottom: 40px;
   }
 
   .info-bar {
@@ -2280,7 +2349,7 @@ button {
 
   .hero__header {
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     overflow: visible;
   }
 
@@ -2335,7 +2404,8 @@ button {
     align-items: center;
     text-align: center;
     min-height: auto;
-    gap: 24px;
+    gap: 16px;
+    margin-top: 0;
   }
 
   .hero__content,
@@ -2346,7 +2416,7 @@ button {
   }
 
   .hero__content {
-    margin: 0 auto 16px;
+    margin: 0 auto 8px;
     padding-bottom: 0;
     width: 100%;
   }
@@ -2387,8 +2457,9 @@ button {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 32px;
-    padding: 32px 24px 28px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding: 24px 22px 20px;
     position: relative;
     z-index: 1;
   }
@@ -2400,6 +2471,14 @@ button {
 
   .enquiry-card__phone .enquiry-card__select {
     width: 100%;
+  }
+
+  .enquiry-card__row {
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry-card--hero .enquiry-card__form {
+    max-height: 320px;
   }
 
   .enquiry-card__title { font-size: 22px; }
