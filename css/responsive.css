@@ -121,52 +121,10 @@ body {
   }
 }
 
-/* Hero overlap prevention — responsive only */
-@media (min-width: 1025px) {
-  .hero__main {
-    margin-top: 0;
-    align-items: start;
-  }
-
-  .hero__content {
-    margin-top: clamp(0px, 1.6vw, 22px);
-  }
-
-  .hero__image-wrap {
-    bottom: -75px;
-    margin-bottom: 0;
-  }
-
-  .enquiry-card--hero {
-    margin-top: 0;
-    margin-bottom: clamp(40px, 4.4vw, 72px);
-  }
-
-  .enquiry-card--hero .enquiry-card__form {
-    max-height: clamp(300px, 33vh, 360px);
-  }
-
-  .info-bar {
-    margin-top: 0;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .hero__content {
-    margin-top: 0;
-  }
-
-  .enquiry-card--hero {
-    margin-bottom: 24px;
-  }
-
-  .enquiry-card--hero .enquiry-card__form {
-    max-height: 300px;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero__content {
-    margin-top: 0;
-  }
-}
+/* ===================================================
+   Hero is laid out entirely in style.css as a clean
+   3-column grid (content | image | form) with no
+   negative margins or absolute positioning.
+   Logos are pre-trimmed PNGs sized with width clamps.
+   Nothing further to override here.
+   =================================================== */

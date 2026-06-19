@@ -80,7 +80,7 @@ button {
 }
 
 .hero .container {
-  max-width: 1400px;
+  max-width: 1560px;
   padding: 0 36px;
 }
 
@@ -149,13 +149,13 @@ button {
 /* Hero */
 .hero {
   background: radial-gradient(ellipse 85% 65% at 50% 0%, #f5f0ff 0%, #ffffff 70%);
-  padding-top: 8px;
+  padding-top: clamp(16px, 3vh, 32px);
+  padding-bottom: 0;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .hero__container {
-  padding-bottom: 32px;
   overflow: visible;
 }
 
@@ -164,81 +164,56 @@ button {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  margin-bottom: 4px;
-  padding-top: 0;
+  margin-bottom: clamp(16px, 2.5vh, 32px);
 }
 
+/* Logo row — clean flex, real gap, NO negative margins (PNGs are pre-trimmed) */
 .hero__logos {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  gap: 0;
+  gap: clamp(20px, 2.6vw, 52px);
   max-width: 100%;
-  overflow: hidden;
-}
-
-.hero__logos > * {
-  margin: 0;
-  padding: 0;
 }
 
 .hero__logo {
   display: block;
   width: auto;
-  height: auto;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
 .hero__logo--jgu {
-  height: 118px;
-  width: auto;
-  object-fit: contain;
-  object-position: left center;
-  /* Pull JSLA logo over empty right padding baked into this PNG */
-  margin-right: clamp(-295px, -22vw, -140px);
+  height: clamp(74px, 8vw, 116px);
 }
 
 .hero__logo--jsla-icon {
-  height: 111px;
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-  /* Pull icon over empty left padding in its PNG */
-  margin-left: clamp(-65px, -4vw, -32px);
+  height: clamp(60px, 6.6vw, 96px);
 }
 
 .hero__logo--jsla-text {
-  height: 83px;
-  width: auto;
-  max-width: 260px;
-  object-fit: contain;
-  object-position: left center;
-  margin-left: -100px;
+  height: clamp(44px, 4.8vw, 62px);
 }
 
+/* Hero body — 3 columns: content | image | form, bottom-aligned */
 .hero__main {
   display: grid;
-  grid-template-columns: 1fr minmax(300px, 400px);
-  grid-template-areas: 'content form';
-  align-items: start;
-  column-gap: 28px;
+  grid-template-columns: minmax(580px, 1fr) minmax(250px, 360px) minmax(320px, 440px);
+  grid-template-areas: 'content image form';
+  align-items: end;
+  column-gap: clamp(16px, 1.6vw, 32px);
   min-height: auto;
-  position: relative;
-  margin-top: -8px;
 }
 
 .hero__content {
   grid-area: content;
-  align-self: start;
-  margin-bottom: 8px;
-  padding-bottom: 0;
-  max-width: 560px;
+  align-self: center;
+  max-width: 660px;
   min-width: 0;
   position: relative;
-  z-index: 3;
-  overflow: visible;
-  margin-top: 56px;
+  z-index: 1;
+  padding-bottom: clamp(16px, 3vh, 40px);
 }
 
 .hero__title {
@@ -251,20 +226,22 @@ button {
 }
 
 .hero__title-line:first-child {
-  font-size: 49px;
+  font-size: clamp(38px, 3.66vw, 55px);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.01em;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   color: #111111;
+  white-space: nowrap;
 }
 
 .hero__title-gradient {
   font-family: var(--font);
-  font-size: 49px;
+  font-size: clamp(38px, 3.66vw, 55px);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: 0;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   max-width: 892px;
   background: linear-gradient(
     180deg,
@@ -282,21 +259,21 @@ button {
 }
 
 .hero__subtitle {
-  font-size: 14px;
+  font-size: clamp(16px, 1.3vw, 20px);
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #111111;
-  max-width: 380px;
-  margin-bottom: 50px;
-  line-height: 1.45;
+  max-width: 500px;
+  margin-bottom: clamp(22px, 3.5vh, 44px);
+  line-height: 1.5;
 }
 
 .hero__cta {
   background: #1a237e;
-  font-size: 14px;
+  font-size: clamp(15px, 1.15vw, 18px);
   font-weight: 700;
-  padding: 14px 40px;
+  padding: 16px 46px;
   letter-spacing: 0.08em;
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(10, 30, 94, 0.22);
@@ -308,19 +285,22 @@ button {
 }
 
 .hero__image-wrap {
-  position: absolute;
-  left: clamp(405px, 34%, 647px);
-  bottom: -25px;
-  margin-bottom: -5px;
-  z-index: 2;
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  align-self: end;
+  min-width: 0;
+  /* shift the person leftward toward the content */
+  margin-left: clamp(-60px, -3.4vw, -18px);
   line-height: 0;
   pointer-events: none;
 }
 
 .hero__image {
-  width: min(500px, 40vw);
+  width: min(100%, 460px);
   height: auto;
-  max-height: 580px;
+  max-height: clamp(420px, 66vh, 620px);
   object-fit: contain;
   object-position: bottom center;
 }
@@ -329,23 +309,23 @@ button {
 .enquiry-card--hero {
   grid-area: form;
   justify-self: end;
-  align-self: start;
+  align-self: end;
   display: flex;
   flex-direction: column;
   background: linear-gradient(140deg, #231990 0%, #5f23a8 53%, #1e5ebd 72%, #00bfa5 100%);
-  border-radius: 20px;
-  padding: 24px 22px 20px;
+  border-radius: 22px;
+  padding: 30px 28px 26px;
   width: 100%;
-  max-width: 400px;
-  margin-top: -20px;
-  margin-bottom: 96px;
+  max-width: 440px;
+  max-height: 82vh;
+  margin: 0 0 clamp(24px, 4vh, 48px);
   z-index: 2;
   box-shadow: 0 18px 52px rgba(46, 8, 84, 0.24);
 }
 
 .enquiry-card--hero .enquiry-card__title {
-  margin-bottom: 16px;
-  font-size: 24px;
+  margin-bottom: 18px;
+  font-size: 27px;
 }
 
 .enquiry-card__title {
@@ -368,8 +348,8 @@ button {
 
 .enquiry-card--hero .enquiry-card__form {
   overflow-y: auto;
-  max-height: 340px;
-  gap: 10px;
+  max-height: clamp(330px, 46vh, 480px);
+  gap: 12px;
   padding-right: 8px;
   margin-right: -4px;
   -webkit-overflow-scrolling: touch;
@@ -379,7 +359,8 @@ button {
 
 .enquiry-card--hero .enquiry-card__input,
 .enquiry-card--hero .enquiry-card__select {
-  padding: 12px 14px;
+  padding: 14px 16px;
+  font-size: 15px;
 }
 
 .enquiry-card--hero .enquiry-card__form::-webkit-scrollbar {
@@ -501,12 +482,12 @@ button {
     #0097a7 100%
   );
   padding: 0;
-  min-height: 88px;
+  min-height: 96px;
   display: flex;
   align-items: stretch;
   position: relative;
   z-index: 3;
-  margin-top: -40px;
+  margin-top: 0;
 }
 
 .info-bar__inner {
@@ -515,7 +496,7 @@ button {
   justify-content: center;
   gap: 0;
   width: 100%;
-  min-height: 88px;
+  min-height: 96px;
 }
 
 .info-bar__item {
@@ -526,12 +507,12 @@ button {
   justify-content: center;
   gap: 2px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
   text-align: center;
   white-space: normal;
-  line-height: 1.25;
-  padding: 16px 12px;
+  line-height: 1.35;
+  padding: 18px 14px;
 }
 
 .info-bar__line {
@@ -2003,8 +1984,12 @@ button {
     padding-bottom: 0;
   }
 
+  .hero__title-line:first-child {
+    font-size: clamp(28px, 3.6vw, 46px);
+  }
+
   .hero__title-gradient {
-    font-size: clamp(40px, 4.8vw, 62px);
+    font-size: clamp(28px, 3.6vw, 46px);
     min-height: auto;
   }
 
@@ -2024,11 +2009,11 @@ button {
   .enquiry-card--hero {
     grid-area: form;
     width: 100%;
-    max-width: 380px;
+    max-width: 420px;
     justify-self: center;
     margin-top: 0;
     margin-bottom: 48px;
-    padding: 24px 22px 20px;
+    padding: 28px 26px 24px;
   }
 
   .info-bar {
@@ -2360,42 +2345,21 @@ button {
     flex-wrap: nowrap;
     width: 100%;
     max-width: 100%;
-    gap: 0;
+    gap: clamp(8px, 2.4vw, 18px);
     overflow: visible;
   }
 
+  /* Trimmed PNGs shrink with viewport width so all three fit one row, no overlap */
   .hero__logo--jgu {
-    height: clamp(58px, 15vw, 76px);
-    width: auto;
-    max-width: 48%;
-    margin-right: 0;
-    flex-shrink: 1;
-    min-width: 0;
-    object-fit: contain;
-    object-position: left center;
+    height: clamp(42px, 11.5vw, 72px);
   }
 
   .hero__logo--jsla-icon {
-    height: clamp(54px, 14vw, 72px);
-    width: auto;
-    margin-left: auto;
-    margin-right: 0;
-    flex-shrink: 0;
+    height: clamp(36px, 9.5vw, 60px);
   }
 
   .hero__logo--jsla-text {
-    height: clamp(46px, 12vw, 60px);
-    width: auto;
-    max-width: min(56vw, 220px);
-    margin-left: clamp(-40px, -8.5vw, -14px);
-    flex-shrink: 1;
-    min-width: 0;
-    object-fit: contain;
-    object-position: right center;
-  }
-
-  .hero__container {
-    padding-bottom: 8px;
+    height: clamp(34px, 9vw, 56px);
   }
 
   .hero__main {
@@ -2431,11 +2395,15 @@ button {
     width: 100%;
   }
 
-  .hero__title-line:first-child { font-size: 20px; }
+  .hero__title-line:first-child {
+    font-size: 20px;
+    white-space: normal;
+  }
   .hero__title-gradient {
     font-size: clamp(28px, 7vw, 40px);
     max-width: 100%;
     min-height: auto;
+    white-space: normal;
   }
   .hero__subtitle {
     margin: 0 auto 24px;
@@ -3106,18 +3074,15 @@ button {
   }
 
   .hero__logo--jgu {
-    height: clamp(54px, 14vw, 68px);
-    max-width: 46%;
+    height: clamp(40px, 11vw, 60px);
   }
 
   .hero__logo--jsla-icon {
-    height: clamp(50px, 13vw, 66px);
+    height: clamp(34px, 9vw, 50px);
   }
 
   .hero__logo--jsla-text {
-    height: clamp(42px, 11vw, 56px);
-    max-width: min(54vw, 200px);
-    margin-left: clamp(-36px, -7.5vw, -12px);
+    height: clamp(32px, 8.5vw, 48px);
   }
 
   .enquiry-card__phone {
