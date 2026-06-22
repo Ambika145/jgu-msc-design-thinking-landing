@@ -176,6 +176,7 @@ body {
 .enquiry-card__widget,
 .enquire-panel__widget {
   width: 100%;
+  pointer-events: auto;
 }
 
 .enquiry-card__widget .npf_wgts,
@@ -183,6 +184,7 @@ body {
   width: 100%;
   min-height: 320px;
   display: block;
+  pointer-events: auto;
 }
 
 .enquiry-card__widget .npf_wgts {
@@ -199,10 +201,21 @@ body {
   min-height: 320px;
   border: 0;
   display: block;
+  pointer-events: auto;
 }
 
 .enquire-panel__widget .npf_wgts iframe {
   min-height: 500px;
+  pointer-events: auto;
+}
+
+/* NPF popup modal — must sit above page content */
+.npfPopup {
+  z-index: 100000 !important;
+}
+
+.npfPopup-message iframe {
+  pointer-events: auto;
 }
 
 .enquire-panel__widget {
