@@ -122,9 +122,46 @@ body {
 }
 
 /* ===================================================
-   Hero is laid out entirely in style.css as a clean
-   3-column grid (content | image | form) with no
-   negative margins or absolute positioning.
-   Logos are pre-trimmed PNGs sized with width clamps.
-   Nothing further to override here.
+   HERO RESPONSIVE — single source of truth.
+   Base (style.css) = 3 columns (content | image | form)
+   strictly side-by-side for >=1024px (image can never
+   wrap/drop below the form; form is anchored at the top).
+   Only below 1024px does it stack.
    =================================================== */
+
+/* Small tablet / phone landscape (768-1023): heading spans the
+   top, image + form share the row below. Form stays at the top. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero__main {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+    grid-template-areas:
+      'content form'
+      'image   form';
+    column-gap: clamp(18px, 2.5vw, 36px);
+    row-gap: clamp(16px, 2vw, 28px);
+    align-items: start;
+  }
+
+  .hero__content {
+    align-self: start;
+    max-width: none;
+    padding-top: clamp(8px, 1.5vw, 20px);
+  }
+
+  .hero__image-wrap {
+    grid-area: image;
+    justify-self: center;
+    align-self: end;
+  }
+
+  .hero__image {
+    max-width: 340px;
+  }
+
+  .enquiry-card--hero {
+    align-self: start;
+    justify-self: stretch;
+    max-width: 460px;
+    margin: 0;
+  }
+}

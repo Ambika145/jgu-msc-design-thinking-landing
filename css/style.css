@@ -80,13 +80,13 @@ button {
 }
 
 .hero .container {
-  max-width: 1560px;
-  padding: 0 36px;
+  max-width: 1640px;
+  padding: 0 clamp(20px, 3vw, 48px);
 }
 
 .section-title {
   text-align: center;
-  font-size: 36px;
+  font-size: clamp(26px, 3.4vw, 36px);
   font-weight: 800;
   color: var(--navy);
   margin-bottom: 48px;
@@ -149,7 +149,7 @@ button {
 /* Hero */
 .hero {
   background: radial-gradient(ellipse 85% 65% at 50% 0%, #f5f0ff 0%, #ffffff 70%);
-  padding-top: clamp(16px, 3vh, 32px);
+  padding-top: clamp(16px, 2vw, 30px);
   padding-bottom: 0;
   position: relative;
   overflow: hidden;
@@ -164,7 +164,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  margin-bottom: clamp(16px, 2.5vh, 32px);
+  margin-bottom: clamp(14px, 1.6vw, 28px);
 }
 
 /* Logo row — clean flex, real gap, NO negative margins (PNGs are pre-trimmed) */
@@ -196,24 +196,27 @@ button {
   height: clamp(44px, 4.8vw, 62px);
 }
 
-/* Hero body — 3 columns: content | image | form, bottom-aligned */
+/* Hero body — 3 columns: content | image | form.
+   Columns are PROPORTIONAL (fr ratios) with a 0 min, so they shrink
+   together as the window narrows — never overflowing, never jumping,
+   and (being a grid) the image can NEVER wrap below the form.
+   The headline (vw) and image (vw) scale in step with the columns,
+   so the whole composition scales down as one unit. */
 .hero__main {
   display: grid;
-  grid-template-columns: minmax(580px, 1fr) minmax(250px, 360px) minmax(320px, 440px);
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.95fr) minmax(0, 1.3fr);
   grid-template-areas: 'content image form';
-  align-items: end;
-  column-gap: clamp(16px, 1.6vw, 32px);
+  align-items: start;
+  column-gap: clamp(14px, 1.6vw, 40px);
   min-height: auto;
 }
 
 .hero__content {
   grid-area: content;
   align-self: center;
-  max-width: 660px;
   min-width: 0;
   position: relative;
   z-index: 1;
-  padding-bottom: clamp(16px, 3vh, 40px);
 }
 
 .hero__title {
@@ -226,22 +229,20 @@ button {
 }
 
 .hero__title-line:first-child {
-  font-size: clamp(38px, 3.66vw, 55px);
+  font-size: clamp(30px, 2.9vw, 54px);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.01em;
   margin-bottom: 6px;
   color: #111111;
-  white-space: nowrap;
 }
 
 .hero__title-gradient {
   font-family: var(--font);
-  font-size: clamp(38px, 3.66vw, 55px);
+  font-size: clamp(30px, 2.9vw, 54px);
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: -0.01em;
-  white-space: nowrap;
   max-width: 892px;
   background: linear-gradient(
     180deg,
@@ -265,7 +266,7 @@ button {
   text-transform: uppercase;
   color: #111111;
   max-width: 500px;
-  margin-bottom: clamp(22px, 3.5vh, 44px);
+  margin-bottom: clamp(20px, 1.8vw, 36px);
   line-height: 1.5;
 }
 
@@ -291,34 +292,34 @@ button {
   align-items: flex-end;
   align-self: end;
   min-width: 0;
-  /* shift the person leftward toward the content */
-  margin-left: clamp(-60px, -3.4vw, -18px);
   line-height: 0;
   pointer-events: none;
 }
 
+/* Scales with viewport WIDTH (not height), anchored at the bottom of
+   its cell so the person stays elevated on the info strip and never
+   sinks under it. height:auto keeps the aspect ratio locked. */
 .hero__image {
-  width: min(100%, 460px);
+  width: 100%;
+  max-width: clamp(260px, 30vw, 480px);
   height: auto;
-  max-height: clamp(420px, 66vh, 620px);
-  object-fit: contain;
-  object-position: bottom center;
 }
 
-/* Hero enquiry card */
+/* Hero enquiry card — bottom-anchored, width follows its column.
+   Card height is bounded by the inner form's scroll, so it never
+   dictates the row height or pushes other elements around. */
 .enquiry-card--hero {
   grid-area: form;
   justify-self: end;
-  align-self: end;
+  align-self: start;
   display: flex;
   flex-direction: column;
   background: linear-gradient(140deg, #231990 0%, #5f23a8 53%, #1e5ebd 72%, #00bfa5 100%);
   border-radius: 22px;
   padding: 30px 28px 26px;
   width: 100%;
-  max-width: 440px;
-  max-height: 82vh;
-  margin: 0 0 clamp(24px, 4vh, 48px);
+  max-width: 480px;
+  margin: 0 0 clamp(24px, 2.5vw, 44px);
   z-index: 2;
   box-shadow: 0 18px 52px rgba(46, 8, 84, 0.24);
 }
@@ -346,21 +347,20 @@ button {
   gap: 12px;
 }
 
+/* Internal scroll height:
+   - 28rem on normal/tall screens (stable, identical across monitors)
+   - on short laptop viewports, shrinks via calc(100vh - …) so the whole
+     hero (logos + content + form + the stats strip below) fits the fold,
+     keeping the Postgraduate/Duration/Batch/EMI bar above the fold. */
 .enquiry-card--hero .enquiry-card__form {
-  overflow-y: auto;
-  max-height: clamp(330px, 46vh, 480px);
   gap: 12px;
+  max-height: min(28rem, calc(100vh - 360px));
+  overflow-y: auto;
   padding-right: 8px;
   margin-right: -4px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.15);
-}
-
-.enquiry-card--hero .enquiry-card__input,
-.enquiry-card--hero .enquiry-card__select {
-  padding: 14px 16px;
-  font-size: 15px;
 }
 
 .enquiry-card--hero .enquiry-card__form::-webkit-scrollbar {
@@ -376,6 +376,12 @@ button {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.enquiry-card--hero .enquiry-card__input,
+.enquiry-card--hero .enquiry-card__select {
+  padding: 14px 16px;
+  font-size: 15px;
 }
 
 .enquiry-card__input,
@@ -704,7 +710,7 @@ button {
 
 .fee-structure__title {
   text-align: center;
-  font-size: 36px;
+  font-size: clamp(26px, 3.4vw, 36px);
   font-weight: 800;
   color: var(--white);
   margin-bottom: 48px;
@@ -762,7 +768,7 @@ button {
 
 .highlights__title {
   text-align: center;
-  font-size: 36px;
+  font-size: clamp(26px, 3.4vw, 36px);
   font-weight: 800;
   color: #1a1067;
   line-height: 1.2;
@@ -818,7 +824,7 @@ button {
 
 .skills__title {
   text-align: center;
-  font-size: 36px;
+  font-size: clamp(26px, 3.4vw, 36px);
   font-weight: 800;
   color: #1a1067;
   margin-bottom: 44px;
@@ -1184,7 +1190,7 @@ button {
 }
 
 .faculty__title {
-  font-size: 40px;
+  font-size: clamp(28px, 3.6vw, 40px);
   font-weight: 800;
   color: #0f1b5c;
   line-height: 1.15;
@@ -1967,59 +1973,6 @@ button {
    ============================================= */
 
 @media (max-width: 1280px) {
-  .hero__main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "content content"
-      "image form";
-    min-height: auto;
-    gap: 16px 20px;
-    margin-top: 0;
-  }
-
-  .hero__content {
-    grid-area: content;
-    max-width: none;
-    margin-bottom: 8px;
-    padding-bottom: 0;
-  }
-
-  .hero__title-line:first-child {
-    font-size: clamp(28px, 3.6vw, 46px);
-  }
-
-  .hero__title-gradient {
-    font-size: clamp(28px, 3.6vw, 46px);
-    min-height: auto;
-  }
-
-  .hero__image-wrap {
-    position: static;
-    grid-area: image;
-    left: auto;
-    justify-self: center;
-    margin: 0 auto;
-  }
-
-  .hero__image {
-    width: min(100%, 320px);
-    margin: 0 auto;
-  }
-
-  .enquiry-card--hero {
-    grid-area: form;
-    width: 100%;
-    max-width: 420px;
-    justify-self: center;
-    margin-top: 0;
-    margin-bottom: 48px;
-    padding: 28px 26px 24px;
-  }
-
-  .info-bar {
-    margin-top: 0;
-  }
-
   .highlights__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2067,43 +2020,6 @@ button {
 @media (max-width: 1024px) {
   .hero .container {
     padding: 0 20px;
-  }
-
-  .hero__main {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "content content"
-      "image form";
-    gap: 16px 20px;
-  }
-
-  .hero__content {
-    grid-area: content;
-    max-width: none;
-    margin-bottom: 8px;
-    padding-bottom: 0;
-  }
-
-  .hero__image-wrap {
-    position: static;
-    grid-area: image;
-    transform: none;
-    justify-self: center;
-    margin: 0 auto;
-  }
-
-  .hero__image {
-    width: min(100%, 340px);
-    margin: 0 auto;
-  }
-
-  .enquiry-card--hero {
-    grid-area: form;
-    width: 100%;
-    max-width: 380px;
-    justify-self: center;
-    margin-top: 0;
-    margin-bottom: 40px;
   }
 
   .info-bar {
@@ -2386,12 +2302,8 @@ button {
   }
 
   .hero__image-wrap {
-    position: static;
-    transform: none;
-    left: auto;
     justify-self: center;
-    margin-left: 0;
-    margin-bottom: 0;
+    margin: 0 auto;
     width: 100%;
   }
 
@@ -2432,6 +2344,15 @@ button {
     z-index: 1;
   }
 
+  /* Single column: let the form expand fully and the page scroll,
+     instead of a nested internal scroll. */
+  .enquiry-card--hero .enquiry-card__form {
+    max-height: none;
+    overflow: visible;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
   .enquiry-card__phone {
     flex-direction: column;
     gap: 10px;
@@ -2443,10 +2364,6 @@ button {
 
   .enquiry-card__row {
     grid-template-columns: 1fr;
-  }
-
-  .enquiry-card--hero .enquiry-card__form {
-    max-height: 320px;
   }
 
   .enquiry-card__title { font-size: 22px; }
