@@ -3,13 +3,10 @@
 
   var WIDGET_ID = '0185dd0a8a9025344c251fc96b76a370';
   var REGISTER_BASE = 'https://widgets.in8.nopaperforms.com/register?';
-  var POPUP_SRC = 'https://in8cdn.npfs.co/js/widget/npfwpopup.js';
+  var POPUP_ID = 'npf-enquiry-popup';
 
   /* Required until your Vercel / production domain is whitelisted in Meritto */
   window.npf_m = 'preview';
-
-  var IFRAME_SANDBOX =
-    'allow-forms allow-scripts allow-same-origin allow-top-navigation allow-popups allow-popups-to-escape-sandbox allow-downloads allow-modals';
 
   function buildRegisterUrl(widgetId) {
     return (
@@ -30,69 +27,20 @@
     return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
   }
 
-  function isNpfIframe(iframe) {
-    if (!iframe || iframe.tagName !== 'IFRAME') {
-      return false;
-    }
-    var src = iframe.getAttribute('src') || '';
-    return src.indexOf('nopaperforms') !== -1;
-  }
-
-  function configureIframe(iframe, height) {
+  function createFormIframe(height) {
+    var iframe = document.createElement('iframe');
     iframe.width = '100%';
     iframe.height = String(height);
     iframe.setAttribute('frameborder', '0');
-    iframe.setAttribute('sandbox', IFRAME_SANDBOX);
     iframe.setAttribute('title', 'Enquiry form');
+    iframe.setAttribute('loading', 'lazy');
     iframe.style.pointerEvents = 'auto';
     iframe.style.border = '0';
     iframe.style.display = 'block';
-  }
-
-  function createFormIframe(height) {
-    var iframe = document.createElement('iframe');
-    configureIframe(iframe, height);
+    iframe.style.width = '100%';
+    iframe.style.background = 'transparent';
     iframe.src = buildRegisterUrl(WIDGET_ID);
     return iframe;
-  }
-
-  function fixNpfIframes(root) {
-    var scope = root || document;
-    var iframes = scope.querySelectorAll('iframe');
-    var i;
-
-    for (i = 0; i < iframes.length; i += 1) {
-      if (isNpfIframe(iframes[i])) {
-        iframes[i].setAttribute('sandbox', IFRAME_SANDBOX);
-        iframes[i].style.pointerEvents = 'auto';
-      }
-    }
-  }
-
-  function observeNpfIframes() {
-    if (!window.MutationObserver) {
-      return;
-    }
-
-    var observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
-        mutation.addedNodes.forEach(function (node) {
-          if (node.nodeType !== 1) {
-            return;
-          }
-
-          if (node.tagName === 'IFRAME' && isNpfIframe(node)) {
-            node.setAttribute('sandbox', IFRAME_SANDBOX);
-            node.style.pointerEvents = 'auto';
-            return;
-          }
-
-          fixNpfIframes(node);
-        });
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   function mountIframes() {
@@ -110,42 +58,74 @@
         iframe = createFormIframe(height);
         container.appendChild(iframe);
       } else {
-        configureIframe(iframe, height);
-        if (iframe.src !== targetUrl) {
-          iframe.src = targetUrl;
+        iframe.height = String(height);
+        iframe.style.pointerEvents = 'auto';
+        if (iframe.getAttribute('src') !== targetUrl) {
+          iframe.setAttribute('src', targetUrl);
         }
       }
     }
-
-    fixNpfIframes(document);
   }
 
-  function openPopup() {
-    var popup = document.getElementById('popup-' + WIDGET_ID);
-    var messageEl = document.getElementById('popup-message-' + WIDGET_ID);
-    var closeBtn = document.getElementById('npfWdgclose-' + WIDGET_ID);
+  function ensurePopupMarkup() {
+    if (document.getElementById(POPUP_ID)) {
+      return document.getElementById(POPUP_ID);
+    }
 
-    if (!popup || !messageEl) {
+    var popup = document.createElement('div');
+    popup.id = POPUP_ID;
+    popup.className = 'npf-enquiry-popup';
+    popup.hidden = true;
+    popup.innerHTML =
+      '<div class="npf-enquiry-popup__backdrop" aria-hidden="true"></div>' +
+      '<div class="npf-enquiry-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="npf-enquiry-popup-title">' +
+      '<div class="npf-enquiry-popup__head">' +
+      '<h2 id="npf-enquiry-popup-title">Enquiry Form</h2>' +
+      '<button type="button" class="npf-enquiry-popup__close" aria-label="Close enquiry form">&times;</button>' +
+      '</div>' +
+      '<div class="npf-enquiry-popup__body"></div>' +
+      '</div>';
+
+    document.body.appendChild(popup);
+    return popup;
+  }
+
+  function closePopup() {
+    var popup = document.getElementById(POPUP_ID);
+    if (!popup) {
       return;
     }
 
-    messageEl.innerHTML = '';
-    messageEl.appendChild(createFormIframe(500));
-    popup.style.display = 'block';
+    var body = popup.querySelector('.npf-enquiry-popup__body');
+    popup.hidden = true;
+    document.body.style.overflow = '';
 
-    if (closeBtn) {
-      closeBtn.onclick = function () {
-        popup.style.display = 'none';
-        messageEl.innerHTML = '';
-      };
+    if (body) {
+      body.innerHTML = '';
+    }
+  }
+
+  function openPopup() {
+    var popup = ensurePopupMarkup();
+    var body = popup.querySelector('.npf-enquiry-popup__body');
+    var closeBtn = popup.querySelector('.npf-enquiry-popup__close');
+    var backdrop = popup.querySelector('.npf-enquiry-popup__backdrop');
+
+    if (!body) {
+      return;
     }
 
-    var backdrop = document.getElementById('popup-back-' + WIDGET_ID);
+    body.innerHTML = '';
+    body.appendChild(createFormIframe(500));
+    popup.hidden = false;
+    document.body.style.overflow = 'hidden';
+
+    if (closeBtn) {
+      closeBtn.onclick = closePopup;
+    }
+
     if (backdrop) {
-      backdrop.onclick = function () {
-        popup.style.display = 'none';
-        messageEl.innerHTML = '';
-      };
+      backdrop.onclick = closePopup;
     }
   }
 
@@ -154,9 +134,7 @@
     var i;
 
     for (i = 0; i < buttons.length; i += 1) {
-      var cleanButton = buttons[i].cloneNode(true);
-      buttons[i].parentNode.replaceChild(cleanButton, buttons[i]);
-      cleanButton.addEventListener('click', function (event) {
+      buttons[i].addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
         openPopup();
@@ -164,66 +142,16 @@
     }
   }
 
-  function loadScript(src, onLoad) {
-    var existing = document.querySelector('script[data-npf-src="' + src + '"]');
-
-    if (existing) {
-      if (existing.getAttribute('data-npf-ready') === 'true') {
-        onLoad();
-        return;
-      }
-      existing.addEventListener('load', onLoad, { once: true });
-      return;
-    }
-
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = false;
-    script.src = src;
-    script.setAttribute('data-npf-src', src);
-    script.addEventListener(
-      'load',
-      function () {
-        script.setAttribute('data-npf-ready', 'true');
-        onLoad();
-      },
-      { once: true }
-    );
-    script.addEventListener(
-      'error',
-      function () {
-        console.error('[NoPaperForms] Failed to load:', src);
-        onLoad();
-      },
-      { once: true }
-    );
-    document.body.appendChild(script);
-  }
-
-  function initPopup() {
-    if (typeof window.NpfWidgetsInit !== 'function') {
-      console.error('[NoPaperForms] Popup script did not initialize.');
-      return;
-    }
-
-    new window.NpfWidgetsInit({
-      widgetId: WIDGET_ID,
-      baseurl: 'widgets.in8.nopaperforms.com',
-      formTitle: 'Enquiry Form',
-      titleColor: '#FF0033',
-      backgroundColor: '#ddd',
-      iframeHeight: '500px',
-      buttonbgColor: '#1a237e',
-      buttonTextColor: '#FFFFFF'
-    });
-
-    bindPopupButtons();
-  }
-
   function boot() {
     mountIframes();
-    observeNpfIframes();
-    loadScript(POPUP_SRC, initPopup);
+    ensurePopupMarkup();
+    bindPopupButtons();
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closePopup();
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
