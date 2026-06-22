@@ -181,29 +181,28 @@ body {
 .enquiry-card__widget .npf_wgts,
 .enquire-panel__widget .npf_wgts {
   width: 100%;
-  min-height: clamp(220px, 33vh, 300px);
+  min-height: 320px;
   display: block;
 }
 
 .enquiry-card__widget .npf_wgts {
-  max-height: 300px;
+  min-height: 320px;
 }
 
 .enquire-panel__widget .npf_wgts {
-  min-height: clamp(300px, 28rem, 500px);
+  min-height: 500px;
 }
 
 .enquiry-card__widget .npf_wgts iframe,
 .enquire-panel__widget .npf_wgts iframe {
   width: 100% !important;
-  min-height: clamp(220px, 33vh, 300px);
-  max-height: 300px;
+  min-height: 320px;
   border: 0;
   display: block;
 }
 
 .enquire-panel__widget .npf_wgts iframe {
-  min-height: clamp(300px, 28rem, 500px);
+  min-height: 500px;
 }
 
 .enquire-panel__widget {
