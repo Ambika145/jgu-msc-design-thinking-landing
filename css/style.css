@@ -79,9 +79,10 @@ button {
   padding: 0 24px;
 }
 
+/* Wide cap — matches ~1536px laptop viewport so 100% and 125% scaling look the same */
 .hero .container {
-  max-width: 1640px;
-  padding: 0 clamp(20px, 3vw, 48px);
+  max-width: 1350px;
+  padding: 0 clamp(20px, 2.4vw, 40px);
 }
 
 .section-title {
@@ -149,14 +150,16 @@ button {
 /* Hero */
 .hero {
   background: radial-gradient(ellipse 85% 65% at 50% 0%, #f5f0ff 0%, #ffffff 70%);
-  padding-top: clamp(16px, 2vw, 30px);
+  padding-top: 8px;
   padding-bottom: 0;
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .hero__container {
   overflow: visible;
+  padding-bottom: 0;
 }
 
 .hero__header {
@@ -164,7 +167,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  margin-bottom: clamp(14px, 1.6vw, 28px);
+  margin-bottom: 8px;
 }
 
 /* Logo row — clean flex, real gap, NO negative margins (PNGs are pre-trimmed) */
@@ -173,7 +176,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  gap: clamp(20px, 2.6vw, 52px);
+  gap: 14px;
   max-width: 100%;
 }
 
@@ -185,15 +188,15 @@ button {
 }
 
 .hero__logo--jgu {
-  height: clamp(74px, 8vw, 116px);
+  height: 78px;
 }
 
 .hero__logo--jsla-icon {
-  height: clamp(60px, 6.6vw, 96px);
+  height: 66px;
 }
 
 .hero__logo--jsla-text {
-  height: clamp(44px, 4.8vw, 62px);
+  height: 46px;
 }
 
 /* Hero body — 3 columns: content | image | form.
@@ -207,20 +210,22 @@ button {
   grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.95fr) minmax(0, 1.3fr);
   grid-template-areas: 'content image form';
   align-items: start;
-  column-gap: clamp(14px, 1.6vw, 40px);
+  column-gap: 24px;
   min-height: auto;
+  padding: 18px 0 0;
 }
 
 .hero__content {
   grid-area: content;
-  align-self: center;
+  align-self: start;
   min-width: 0;
   position: relative;
   z-index: 1;
+  margin-top: clamp(28px, 3.5vh, 52px);
 }
 
 .hero__title {
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .hero__title-line {
@@ -229,7 +234,7 @@ button {
 }
 
 .hero__title-line:first-child {
-  font-size: clamp(30px, 2.9vw, 54px);
+  font-size: clamp(30px, 2.8vw, 46px);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.01em;
@@ -239,7 +244,7 @@ button {
 
 .hero__title-gradient {
   font-family: var(--font);
-  font-size: clamp(30px, 2.9vw, 54px);
+  font-size: clamp(30px, 2.8vw, 46px);
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: -0.01em;
@@ -260,24 +265,25 @@ button {
 }
 
 .hero__subtitle {
-  font-size: clamp(16px, 1.3vw, 20px);
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #111111;
   max-width: 500px;
-  margin-bottom: clamp(20px, 1.8vw, 36px);
-  line-height: 1.5;
+  margin-bottom: 14px;
+  line-height: 1.4;
 }
 
 .hero__cta {
   background: #1a237e;
-  font-size: clamp(15px, 1.15vw, 18px);
+  font-size: 15px;
   font-weight: 700;
-  padding: 16px 46px;
+  padding: 13px 34px;
   letter-spacing: 0.08em;
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(10, 30, 94, 0.22);
+  margin-top: clamp(28px, 3.5vh, 52px);
 }
 
 .hero__cta:hover {
@@ -294,15 +300,17 @@ button {
   min-width: 0;
   line-height: 0;
   pointer-events: none;
+  overflow: visible;
+  margin-bottom: -4px;
 }
 
-/* Scales with viewport WIDTH (not height), anchored at the bottom of
-   its cell so the person stays elevated on the info strip and never
-   sinks under it. height:auto keeps the aspect ratio locked. */
+/* Height uses min(vw, vh) so hero fits the fold on laptop screens */
 .hero__image {
-  width: 100%;
-  max-width: clamp(260px, 30vw, 480px);
-  height: auto;
+  width: auto;
+  height: clamp(320px, min(34vw, 50vh), 420px);
+  max-width: none;
+  object-fit: contain;
+  transform: translateX(clamp(-12px, -2vw, -40px));
 }
 
 /* Hero enquiry card — bottom-anchored, width follows its column.
@@ -316,17 +324,18 @@ button {
   flex-direction: column;
   background: linear-gradient(140deg, #231990 0%, #5f23a8 53%, #1e5ebd 72%, #00bfa5 100%);
   border-radius: 22px;
-  padding: 30px 28px 26px;
+  padding: 18px 18px 16px;
   width: 100%;
-  max-width: 480px;
-  margin: 0 0 clamp(24px, 2.5vw, 44px);
+  max-width: 420px;
+  margin: 0 0 clamp(20px, 2.5vh, 36px);
+  height: fit-content;
   z-index: 2;
   box-shadow: 0 18px 52px rgba(46, 8, 84, 0.24);
 }
 
 .enquiry-card--hero .enquiry-card__title {
-  margin-bottom: 18px;
-  font-size: 27px;
+  margin-bottom: 10px;
+  font-size: 21px;
 }
 
 .enquiry-card__title {
@@ -488,7 +497,7 @@ button {
     #0097a7 100%
   );
   padding: 0;
-  min-height: 96px;
+  min-height: 80px;
   display: flex;
   align-items: stretch;
   position: relative;
@@ -502,7 +511,7 @@ button {
   justify-content: center;
   gap: 0;
   width: 100%;
-  min-height: 96px;
+  min-height: 80px;
 }
 
 .info-bar__item {
@@ -513,12 +522,12 @@ button {
   justify-content: center;
   gap: 2px;
   color: #ffffff;
-  font-size: 17px;
+  font-size: 13px;
   font-weight: 400;
   text-align: center;
   white-space: normal;
-  line-height: 1.35;
-  padding: 18px 14px;
+  line-height: 1.25;
+  padding: 10px 8px;
 }
 
 .info-bar__line {
@@ -1208,11 +1217,132 @@ button {
   color: #06b6d4;
 }
 
-.faculty__grid {
+/* Faculty slider — static 4-col grid at 100% scaling; paginated slider at 125% / narrower */
+.faculty-slider {
+  --faculty-card-width: 280px;
+  --faculty-gap: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.faculty-slider__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.faculty-slider__track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--faculty-gap);
+  will-change: transform;
+}
+
+.faculty-slider:not(.faculty-slider--static) .faculty-card {
+  flex: 0 0 var(--faculty-card-width);
+  width: var(--faculty-card-width);
+  max-width: var(--faculty-card-width);
+}
+
+.faculty-slider--static .faculty-slider__viewport {
+  flex: 1 1 100%;
+  overflow: visible;
+}
+
+.faculty-slider--static .faculty-slider__track {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  align-items: stretch;
+  width: 100%;
+  transform: none !important;
+}
+
+.faculty-slider--static .faculty-slider__arrow,
+.faculty-slider--static .faculty-slider__dots {
+  display: none;
+}
+
+.faculty-slider__arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(106, 13, 173, 0.14);
+  background: #ffffff;
+  color: #1a1067;
+  box-shadow: 0 6px 20px rgba(15, 27, 92, 0.1);
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease,
+    border-color 0.25s ease;
+}
+
+.faculty-slider__arrow:hover {
+  background: linear-gradient(135deg, #6a0dad 0%, #1e40af 100%);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(106, 13, 173, 0.28);
+}
+
+.faculty-slider__arrow:active {
+  transform: scale(0.96);
+}
+
+.faculty-slider__arrow:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 3px;
+}
+
+.faculty-slider__dots {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.faculty-slider__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(15, 27, 92, 0.22);
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.faculty-slider__dot--active {
+  width: 28px;
+  background: linear-gradient(90deg, #6a0dad 0%, #2563eb 100%);
+}
+
+.faculty-slider__dot:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .faculty-slider__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .faculty-slider__dots {
+    margin-top: 16px;
+  }
 }
 
 .faculty-card {
@@ -1985,14 +2115,6 @@ button {
     --career-visible-rows: 3;
   }
 
-  .faculty__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .faculty-card__photo {
-    width: 170px;
-  }
-
   .accreditations__title {
     font-size: 44px;
   }
@@ -2149,11 +2271,6 @@ button {
 
   .faculty__title {
     font-size: 32px;
-  }
-
-  .faculty__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px 20px;
   }
 
   .faculty-card__stage {
@@ -2328,8 +2445,9 @@ button {
   }
 
   .hero__image {
-    width: min(100%, 280px);
+    width: min(100%, 320px);
     margin: 0 auto;
+    transform: none;
   }
 
   .enquiry-card--hero {
@@ -2777,11 +2895,8 @@ button {
     font-size: 28px;
   }
 
-  .faculty__grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    max-width: 340px;
-    margin: 0 auto;
+  .faculty-slider:not(.faculty-slider--static) .faculty-card {
+    --faculty-card-width: min(300px, calc(100vw - 120px));
   }
 
   .faculty-card__stage {

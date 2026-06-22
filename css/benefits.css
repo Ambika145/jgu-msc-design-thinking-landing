@@ -42,8 +42,8 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-bottom: 0;
-  padding-left: max(24px, calc((100vw - 1320px) / 2 + 24px));
-  padding-right: max(24px, calc((100vw - 1320px) / 2 + 24px));
+  padding-left: max(24px, calc((100vw - 1640px) / 2 + 24px));
+  padding-right: max(24px, calc((100vw - 1640px) / 2 + 24px));
   box-sizing: border-box;
 }
 
@@ -55,6 +55,7 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
 }
 
@@ -221,6 +222,19 @@
     height: var(--benefit-card-height);
     min-height: var(--benefit-card-height);
     max-height: var(--benefit-card-height);
+  }
+}
+
+/* Laptop / 125% scaling (~1536px) — 2 full cards, no half-cut peek */
+@media (min-width: 1025px) and (max-width: 1679px) {
+  .benefits-slider {
+    --benefit-card-width: 400px;
+    --benefit-card-height: 460px;
+    --benefit-gap: 20px;
+  }
+
+  .benefits-slider__viewport {
+    overflow: hidden;
   }
 }
 

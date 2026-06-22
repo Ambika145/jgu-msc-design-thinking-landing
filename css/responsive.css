@@ -145,23 +145,167 @@ body {
   .hero__content {
     align-self: start;
     max-width: none;
-    padding-top: clamp(8px, 1.5vw, 20px);
+    margin-top: clamp(24px, 3vh, 48px);
+    padding-top: 0;
   }
 
   .hero__image-wrap {
     grid-area: image;
     justify-self: center;
     align-self: end;
+    align-items: flex-end;
+    margin-bottom: -4px;
   }
 
   .hero__image {
-    max-width: 340px;
+    width: auto;
+    height: clamp(360px, 42vw, 460px);
+    max-width: none;
   }
 
   .enquiry-card--hero {
     align-self: start;
     justify-self: stretch;
     max-width: 460px;
-    margin: 0;
+    margin: 0 0 clamp(20px, 2.5vh, 36px);
+    height: fit-content;
+  }
+}
+
+/* NoPaperForms widget embeds */
+.enquiry-card__widget,
+.enquire-panel__widget {
+  width: 100%;
+}
+
+.enquiry-card__widget .npf_wgts,
+.enquire-panel__widget .npf_wgts {
+  width: 100%;
+  min-height: clamp(220px, 33vh, 300px);
+  display: block;
+}
+
+.enquiry-card__widget .npf_wgts {
+  max-height: 300px;
+}
+
+.enquire-panel__widget .npf_wgts {
+  min-height: clamp(300px, 28rem, 500px);
+}
+
+.enquiry-card__widget .npf_wgts iframe,
+.enquire-panel__widget .npf_wgts iframe {
+  width: 100% !important;
+  min-height: clamp(220px, 33vh, 300px);
+  max-height: 300px;
+  border: 0;
+  display: block;
+}
+
+.enquire-panel__widget .npf_wgts iframe {
+  min-height: clamp(300px, 28rem, 500px);
+}
+
+.enquire-panel__widget {
+  padding: 36px 32px 32px;
+  background: linear-gradient(145deg, #4f2fe4 0%, #5b2dad 32%, #4a2896 50%, #00758a 80%, #00b8a2 100%);
+  border-radius: 36px;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.enquiry-card__widget {
+  overflow: visible;
+  border-radius: 10px;
+}
+
+button.program-info__cta {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+/* NPF popup buttons — match page UI, hide auto-floating widget */
+body > button.npfWidgetButton.npfWidget-0185dd0a8a9025344c251fc96b76a370 {
+  display: none !important;
+}
+
+.hero__content .hero__cta--enroll.npfWidgetButton {
+  appearance: none;
+  -webkit-appearance: none;
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: auto !important;
+  min-width: 0;
+  max-width: none;
+  min-height: 48px;
+  margin: clamp(28px, 3.5vh, 52px) 0 0 !important;
+  padding: 13px 34px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  background: #1a237e !important;
+  color: #ffffff !important;
+  font-family: var(--font, "Montserrat", sans-serif) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(10, 30, 94, 0.22) !important;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hero__content .hero__cta--enroll.npfWidgetButton:hover,
+.hero__content .hero__cta--enroll.npfWidgetButton:focus-visible {
+  background: #0f2878 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 6px 18px rgba(10, 30, 94, 0.28) !important;
+  transform: translateY(-1px);
+}
+
+.hero__content .hero__cta--enroll.npfWidgetButton:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(10, 30, 94, 0.2) !important;
+}
+
+.hero__cta-text {
+  display: block;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+@media (max-width: 767px) {
+  .hero__content .hero__cta--enroll.npfWidgetButton {
+    width: 100% !important;
+    max-width: 320px;
+    min-height: 48px;
+    padding: 14px 32px !important;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop laptop hero — kept for info-bar sync; hero base styles in style.css */
+@media (min-width: 1024px) {
+  .info-bar,
+  .info-bar__inner {
+    min-height: 80px;
+  }
+
+  .info-bar__item {
+    padding: 10px 8px;
+    font-size: 13px;
+    line-height: 1.25;
   }
 }

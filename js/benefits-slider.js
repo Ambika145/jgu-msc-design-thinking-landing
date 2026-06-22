@@ -18,7 +18,8 @@
   function getCardsPerView() {
     if (window.innerWidth <= 767) return 1;
     if (window.innerWidth <= 1024) return 2;
-    if (window.innerWidth < 1500) return 2;
+    /* 1920×1080 @125% ≈ 1536px — 3 cards clip; show 2 full cards instead */
+    if (window.innerWidth < 1680) return 2;
     return 3;
   }
 
@@ -173,27 +174,39 @@
     this.goToPage(this.pageIndex, false);
   };
 
+  BenefitsSlider.prototype.getAvailableWidth = function () {
+    var rootStyles = window.getComputedStyle(this.root);
+    var sliderGap = parseFloat(rootStyles.gap) || 16;
+    return (
+      this.root.offsetWidth -
+      this.prevBtn.offsetWidth -
+      this.nextBtn.offsetWidth -
+      sliderGap * 2
+    );
+  };
+
   BenefitsSlider.prototype.updateDimensions = function () {
     var styles = window.getComputedStyle(this.track);
     this.gap = parseFloat(styles.gap) || 24;
 
+    var available = this.getAvailableWidth();
     var fitWidth =
-      (this.viewport.offsetWidth - (this.cardsPerView - 1) * this.gap) / this.cardsPerView;
-    var target = getTargetCardSize();
-    var neededWidth = target.width * this.cardsPerView + (this.cardsPerView - 1) * this.gap;
+      (available - (this.cardsPerView - 1) * this.gap) / this.cardsPerView;
 
-    if (neededWidth <= this.viewport.offsetWidth) {
-      this.cardWidth = target.width;
-      var cardHeight = target.height;
-    } else {
-      this.cardWidth = fitWidth;
-      var cardHeight = Math.round(this.cardWidth * CARD_RATIO);
-    }
+    this.cardWidth = fitWidth;
+    var cardHeight = Math.round(this.cardWidth * CARD_RATIO);
 
     if (cardHeight > MAX_CARD_HEIGHT) {
       cardHeight = MAX_CARD_HEIGHT;
       this.cardWidth = Math.round(cardHeight / CARD_RATIO);
     }
+
+    var visibleWidth =
+      this.cardWidth * this.cardsPerView + (this.cardsPerView - 1) * this.gap;
+
+    this.viewport.style.width = visibleWidth + 'px';
+    this.viewport.style.maxWidth = visibleWidth + 'px';
+    this.viewport.style.flex = '0 0 ' + visibleWidth + 'px';
 
     this.root.style.setProperty('--benefit-card-width', this.cardWidth + 'px');
     this.root.style.setProperty('--benefit-card-height', cardHeight + 'px');

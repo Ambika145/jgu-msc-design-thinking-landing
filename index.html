@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260622a" />
-  <link rel="stylesheet" href="css/benefits.css?v=20260622a" />
-  <link rel="stylesheet" href="css/responsive.css?v=20260622a" />
+  <link rel="stylesheet" href="css/style.css?v=20260673" />
+  <link rel="stylesheet" href="css/benefits.css?v=20260662" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260672" />
 </head>
 <body>
 
@@ -33,7 +33,9 @@
           <p class="hero__subtitle">
             UNLEASH YOUR CREATIVE POTENTIAL WITH M.Sc. IN DESIGN THINKING, INNOVATION &amp; STRATEGY
           </p>
-          <a href="#enquire" class="btn btn--navy hero__cta">ENROLL NOW</a>
+          <button type="button" class="btn btn--navy hero__cta hero__cta--enroll npfWidgetButton npfWidget-0185dd0a8a9025344c251fc96b76a370">
+            <span class="hero__cta-text">ENROLL NOW</span>
+          </button>
         </div>
 
         <div class="hero__image-wrap">
@@ -42,34 +44,9 @@
 
         <aside class="enquiry-card enquiry-card--hero">
           <h2 class="enquiry-card__title">ENQUIRE HERE!</h2>
-          <form class="enquiry-card__form" id="heroEnquiryForm" novalidate>
-            <input type="text" name="name" placeholder="Name" class="enquiry-card__input" />
-            <input type="email" name="email" placeholder="Email Address*" class="enquiry-card__input" required />
-            <div class="enquiry-card__phone">
-              <select name="countryCode" class="enquiry-card__select" aria-label="Country code">
-                <option value="+91">+91</option>
-              </select>
-              <input type="tel" name="phone" placeholder="Enter Mobile Number*" class="enquiry-card__input enquiry-card__input--phone" required />
-            </div>
-            <input type="text" name="otp" placeholder="OTP" class="enquiry-card__input" />
-            <div class="enquiry-card__row">
-              <select name="state" class="enquiry-card__select enquiry-card__select--full" required>
-                <option value="">Current State*</option>
-              </select>
-              <select name="city" class="enquiry-card__select enquiry-card__select--full" required>
-                <option value="">Current City*</option>
-              </select>
-            </div>
-            <select name="course" class="enquiry-card__select enquiry-card__select--full" required>
-              <option value="">Select Course*</option>
-              <option value="msc-dtis">M.Sc. in Design Thinking, Innovation &amp; Strategy</option>
-            </select>
-            <label class="enquiry-card__checkbox">
-              <input type="checkbox" name="consent" required />
-              <span>By entering these details, I agree that JGU Online and its associates may contact me with updates and notifications via Email, SMS, WhatsApp, and Voice Call as per the Privacy Policy. This consent overrides any registration under DNC/NDNC.</span>
-            </label>
-            <button type="submit" class="btn btn--submit">SUBMIT</button>
-          </form>
+          <div class="enquiry-card__widget">
+            <div class="npf_wgts" data-height="320px" data-w="0185dd0a8a9025344c251fc96b76a370" style="width:100%"></div>
+          </div>
         </aside>
       </div>
     </div>
@@ -278,12 +255,12 @@
             height="1130"
             loading="lazy"
           />
-          <a href="#enquire" class="program-info__cta">
+          <button type="button" class="program-info__cta npfWidgetButton npfWidget-0185dd0a8a9025344c251fc96b76a370">
             <span class="program-info__cta-text">Learn More About The Programme.</span>
             <svg class="program-info__arrow" width="28" height="16" viewBox="0 0 28 16" fill="none" aria-hidden="true">
               <path d="M1 8H25M25 8L18 1.5M25 8L18 14.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-          </a>
+          </button>
           <img
             src="images/2.png"
             alt="Creative learning collage with laptop, book, and lightbulb"
@@ -606,7 +583,19 @@
           Meet <span class="faculty__title-accent">Our</span> <span class="faculty__title-faculty">Faculty</span>
         </h2>
       </header>
-      <div class="faculty__grid">
+      <div class="faculty-slider" data-faculty-slider>
+        <button
+          type="button"
+          class="faculty-slider__arrow faculty-slider__arrow--prev"
+          aria-label="Previous faculty"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="faculty-slider__viewport">
+          <div class="faculty-slider__track">
         <article class="faculty-card">
           <div class="faculty-card__stage">
             <div class="faculty-card__halo" aria-hidden="true"></div>
@@ -679,6 +668,20 @@
             <p class="faculty-card__role">Lecturer</p>
           </div>
         </article>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="faculty-slider__arrow faculty-slider__arrow--next"
+          aria-label="Next faculty"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="faculty-slider__dots" role="tablist" aria-label="Faculty pages"></div>
       </div>
     </div>
   </section>
@@ -815,34 +818,9 @@
         Enquire <span class="enquire__title-accent">Now!</span>
       </h2>
       <div class="enquire-panel">
-        <form class="enquire-panel__form" id="mainEnquiryForm" novalidate>
-          <input type="text" name="name" placeholder="Name" class="enquire-panel__input" />
-          <input type="email" name="email" placeholder="Email Address*" class="enquire-panel__input" required />
-          <div class="enquire-panel__phone">
-            <select name="countryCode" class="enquire-panel__select" aria-label="Country code">
-              <option value="+91">+91</option>
-            </select>
-            <input type="tel" name="phone" placeholder="Enter Mobile Number*" class="enquire-panel__input" required />
-          </div>
-          <input type="text" name="otp" placeholder="OTP" class="enquire-panel__input" />
-          <div class="enquire-panel__row">
-            <select name="state" class="enquire-panel__select enquire-panel__select--full" required>
-              <option value="">Current State*</option>
-            </select>
-            <select name="city" class="enquire-panel__select enquire-panel__select--full" required>
-              <option value="">Current City*</option>
-            </select>
-          </div>
-          <select name="course" class="enquire-panel__select enquire-panel__select--full" required>
-            <option value="">Select Course*</option>
-            <option value="msc-dtis">M.Sc. in Design Thinking, Innovation &amp; Strategy</option>
-          </select>
-          <label class="enquire-panel__checkbox">
-            <input type="checkbox" name="consent" required />
-            <span>By entering these details, I agree that JGU Online and its associates may contact me with updates and notifications via Email, SMS, WhatsApp, and Voice Call as per the Privacy Policy. This consent overrides any registration under DNC/NDNC.</span>
-          </label>
-          <button type="submit" class="btn btn--submit">SUBMIT</button>
-        </form>
+        <div class="enquire-panel__widget">
+          <div class="npf_wgts" data-height="500px" data-w="0185dd0a8a9025344c251fc96b76a370" style="width:100%;min-height:500px"></div>
+        </div>
         <div class="enquire-panel__content">
           <h3>Let&rsquo;s connect and shape your path at JGU!</h3>
           <p>Reach out to know more about programmes, admissions, and opportunities.</p>
@@ -857,7 +835,26 @@
     </div>
   </footer>
 
-  <script src="js/benefits-slider.js?v=20260625" defer></script>
+  <script src="js/benefits-slider.js?v=20260662" defer></script>
+  <script src="js/faculty-slider.js?v=20260674" defer></script>
   <script src="js/script.js"></script>
+
+  <!-- NoPaperForms: inline iframe widgets (load before popup init) -->
+  <script type="text/javascript" src="https://widgets.in8.nopaperforms.com/emwgts.js"></script>
+
+  <!-- NoPaperForms: popup widget -->
+  <script src="https://in8cdn.npfs.co/js/widget/npfwpopup.js"></script>
+  <script>
+    var npfW0185dd0a8a9025344c251fc96b76a370 = new NpfWidgetsInit({
+      widgetId: "0185dd0a8a9025344c251fc96b76a370",
+      baseurl: "widgets.in8.nopaperforms.com",
+      formTitle: "Enquiry Form",
+      titleColor: "#FF0033",
+      backgroundColor: "#ddd",
+      iframeHeight: "500px",
+      buttonbgColor: "#1a237e",
+      buttonTextColor: "#FFFFFF"
+    });
+  </script>
 </body>
 </html>

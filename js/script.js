@@ -22,25 +22,4 @@
     });
   });
 
-  /* Form submit handlers */
-  function handleFormSubmit(formId) {
-    const form = document.getElementById(formId);
-    if (!form) return;
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      /* Replace with your CRM / API endpoint */
-      alert('Thank you! We will contact you shortly.');
-      form.reset();
-    });
-  }
-
-  handleFormSubmit('heroEnquiryForm');
-  handleFormSubmit('mainEnquiryForm');
 })();
