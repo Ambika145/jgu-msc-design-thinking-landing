@@ -696,7 +696,7 @@ button {
 .fee-structure {
   position: relative;
   padding: 64px 0 72px;
-  background: url('../images/bg%20picture%20(18).png') center / cover no-repeat;
+  background: url('../images/bg%20picture%20(18).jpg') center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -786,7 +786,7 @@ button {
 
 .highlights__body {
   padding: 72px 0;
-  background: url('../images/bg%20picture%20(19).png') center / cover no-repeat;
+  background: url('../images/bg%20picture%20(19).jpg') center / cover no-repeat;
 }
 
 .highlights__grid {
@@ -1048,7 +1048,7 @@ button {
     var(--career-visible-rows) * var(--career-card-min-h) +
     (var(--career-visible-rows) - 1) * var(--career-gap) + 88px
   );
-  background: url('../images/bg%20image%20(5).png') center / cover no-repeat;
+  background: url('../images/bg%20image%20(5).jpg') center / cover no-repeat;
 }
 
 .career__body {

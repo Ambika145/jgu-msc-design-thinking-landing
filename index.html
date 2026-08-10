@@ -51,6 +51,8 @@
       }
     })();
   </script>
+  <!-- Bootstrap 4 must load FIRST so the site's own styles override Reboot -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css?v=20260673" />
   <link rel="stylesheet" href="css/benefits.css?v=20260662" />
   <link rel="stylesheet" href="css/responsive.css?v=20260676" />
@@ -491,7 +493,7 @@
       </div>
 
       <div class="brochure-cta">
-        <img src="images/img brochure (7).png" alt="Innovation illustration" class="brochure-cta__img" />
+        <img src="images/img brochure (7).jpg" alt="Innovation illustration" class="brochure-cta__img" />
         <div class="brochure-cta__content">
           <h3>Need to know more?</h3>
           <p>Explore the <strong>M.Sc. in Design Thinking, Innovation &amp; Strategy</strong> in detail by downloading the full course brochure. Get comprehensive insights on curriculum, faculty, learning outcomes, and career pathways.</p>
@@ -888,6 +890,10 @@
       <p class="site-footer__copy">&copy; 2026 O.P. Jindal Global University. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- Bootstrap 4 runtime (jQuery required by Bootstrap 4) -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 
   <script src="js/benefits-slider.js?v=20260662" defer></script>
   <script src="js/faculty-slider.js?v=20260674" defer></script>
