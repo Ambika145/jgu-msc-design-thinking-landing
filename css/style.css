@@ -546,6 +546,46 @@ button {
   flex-shrink: 0;
 }
 
+.scholarship-bar {
+  background: linear-gradient(
+    90deg,
+    #1a1040 0%,
+    #1e3a8a 30%,
+    #7538c2 65%,
+    #0097a7 100%
+  );
+  padding: 14px 0;
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.scholarship-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.scholarship-bar__text {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+  .scholarship-bar {
+    padding: 12px 16px;
+  }
+
+  .scholarship-bar__text {
+    font-size: 14px;
+  }
+}
+
 /* Benefits — carousel styles in css/benefits.css */
 
 /* Programme overview */
