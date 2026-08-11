@@ -311,6 +311,8 @@ button {
   max-width: none;
   object-fit: contain;
   transform: translateX(clamp(-12px, -2vw, -40px));
+  /* Must stay none — image shifts left over the CTA and would steal clicks */
+  pointer-events: none;
 }
 
 /* Hero enquiry card — bottom-anchored, width follows its column.

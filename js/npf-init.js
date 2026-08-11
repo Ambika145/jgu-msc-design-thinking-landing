@@ -4,6 +4,8 @@
   var WIDGET_ID = '0185dd0a8a9025344c251fc96b76a370';
   var EMBED_SRC = 'https://widgets.in8.nopaperforms.com/emwgts.js';
   var POPUP_SRC = 'https://in8cdn.npfs.co/js/widget/npfwpopup.js';
+  var initAttempts = 0;
+  var MAX_INIT_ATTEMPTS = 25;
 
   function loadScript(src, onLoad) {
     var existing = document.querySelector('script[data-npf-src="' + src + '"]');
@@ -21,7 +23,7 @@
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = src;
-    script.async = false;
+    script.async = true;
     script.setAttribute('data-npf-src', src);
     script.addEventListener(
       'load',
@@ -37,6 +39,10 @@
 
   function initPopup() {
     if (typeof window.NpfWidgetsInit !== 'function') {
+      initAttempts += 1;
+      if (initAttempts < MAX_INIT_ATTEMPTS) {
+        window.setTimeout(initPopup, 150);
+      }
       return;
     }
 
@@ -53,8 +59,10 @@
   }
 
   function boot() {
-    loadScript(EMBED_SRC, function () {});
-    loadScript(POPUP_SRC, initPopup);
+    /* Load embed first, then popup — required for NPF on some domains */
+    loadScript(EMBED_SRC, function () {
+      loadScript(POPUP_SRC, initPopup);
+    });
   }
 
   if (document.readyState === 'loading') {
