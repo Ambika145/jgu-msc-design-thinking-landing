@@ -58,11 +58,7 @@
       }
     })();
   </script>
-  <!-- Bootstrap 4 must load FIRST so the site's own styles override Reboot -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/style.css?v=20260679" />
-  <link rel="stylesheet" href="css/benefits.css?v=20260662" />
-  <link rel="stylesheet" href="css/responsive.css?v=20260679" />
+  <link rel="stylesheet" href="css/style.css?v=20260709" />
 </head>
 <body>
 
@@ -83,8 +79,8 @@
     <div class="container hero__container">
       <header class="hero__header">
         <div class="hero__logos">
-          <img src="images/logo-jgu.png" alt="O.P. Jindal Global University" class="hero__logo hero__logo--jgu" />
-          <img src="images/logo-jsla-icon.png" alt="" class="hero__logo hero__logo--jsla-icon" aria-hidden="true" />
+          <img src="/assets/shared/images/logo-jgu.png" alt="O.P. Jindal Global University" class="hero__logo hero__logo--jgu" />
+          <img src="images/logo-jsla-icon.png" alt="Jindal School of Liberal Arts &amp; Humanities" class="hero__logo hero__logo--jsla-icon" />
           <img src="images/logo-jsla-text.png" alt="Jindal School of Liberal Arts &amp; Humanities" class="hero__logo hero__logo--jsla-text" />
         </div>
       </header>
@@ -130,7 +126,7 @@
         <span class="info-bar__divider" aria-hidden="true"></span>
         <p class="info-bar__item">
           <span class="info-bar__line">Batch Starts:</span>
-          <span class="info-bar__line info-bar__line--value">September 2026</span>
+          <span class="info-bar__line info-bar__line--value">March 2027</span>
         </p>
         <span class="info-bar__divider" aria-hidden="true"></span>
         <p class="info-bar__item">
@@ -386,11 +382,79 @@
             <tr>
               <td data-label="Fee Component">Instalment 2</td>
               <td data-label="Amount (INR)">INR 1,25,000</td>
-              <td data-label="Payment Schedule">By 15th Jan 2027</td>
+              <td data-label="Payment Schedule">By 15th July 2027</td>
+            </tr>
+            <tr>
+              <td data-label="Fee Component">Total Tuition Fee</td>
+              <td data-label="Amount (INR)">INR 2,75,000</td>
+              <td data-label="Payment Schedule"></td>
             </tr>
           </tbody>
         </table>
       </div>
+                    <div class="payment-options-block">
+          <div class="payment-options-header">
+            <p class="payment-options-eyebrow">Flexible Financing</p>
+            <h3 class="payment-options-title">Tuition Fee &amp; Payment Options</h3>
+            <p class="payment-options-intro">We offer flexible payment options to help learners manage their programme fees conveniently. Available payment options may vary depending on the programme and applicant category.</p>
+          </div>
+
+          <section class="payment-audience" aria-labelledby="pay-indian-heading">
+            <div class="payment-audience-head">
+              <h4 class="payment-options-subtitle" id="pay-indian-heading">For Indian Nationals</h4>
+              <p class="payment-options-lead">You may choose from the following payment options:</p>
+            </div>
+            <div class="payment-cards payment-cards--two">
+              <article class="payment-card">
+                <span class="payment-card-tag">Option 1</span>
+                <h5 class="payment-option-name">Full Payment</h5>
+                <p class="payment-card-highlight">Pay remaining fee in one go</p>
+                <ul>
+                  <li><strong>Registration Fee:</strong> Pay the applicable registration fee at the time of registration.</li>
+                  <li><strong>Remaining Programme Fee:</strong> Pay the complete remaining programme fee within 10 days from the date of registration.</li>
+                </ul>
+              </article>
+              <article class="payment-card payment-card--jodo payment-card--featured">
+                <span class="payment-card-tag">Option 2</span>
+                <span class="payment-card-badge">Popular</span>
+                <h5 class="payment-option-name">Jodo EMI &ndash; 12 Months</h5>
+                <p class="payment-card-highlight">Monthly EMI over 12 months</p>
+                <ul>
+                  <li><strong>Registration Fee:</strong> Pay the applicable registration fee at the time of registration.</li>
+                  <li><strong>Remaining Programme Fee:</strong> Pay the remaining programme fee in monthly instalments over 12 months, subject to eligibility, approval, and applicable terms and conditions.</li>
+                </ul>
+              </article>
+            </div>
+            <p class="payment-options-note"><strong>Important Note:</strong> Indian citizens, including Non-Resident Indians (NRIs), who have valid Indian Aadhaar and PAN details may apply using the payment options available for Indian Nationals, subject to applicable eligibility requirements and verification.</p>
+          </section>
+
+          <section class="payment-audience" aria-labelledby="pay-foreign-heading">
+            <div class="payment-audience-head">
+              <h4 class="payment-options-subtitle" id="pay-foreign-heading">For Foreign Nationals</h4>
+              <p class="payment-options-lead">You may choose from the following payment options:</p>
+            </div>
+            <div class="payment-cards payment-cards--two">
+              <article class="payment-card">
+                <span class="payment-card-tag">Option 1</span>
+                <h5 class="payment-option-name">Full Payment</h5>
+                <p class="payment-card-highlight">Pay remaining fee in one go</p>
+                <ul>
+                  <li><strong>Registration Fee:</strong> Pay the applicable registration fee at the time of registration.</li>
+                  <li><strong>Remaining Programme Fee:</strong> Pay the complete programme fee within 10 days from the date of registration.</li>
+                </ul>
+              </article>
+              <article class="payment-card">
+                <span class="payment-card-tag">Option 2</span>
+                <h5 class="payment-option-name">Two-Instalment Payment Plan</h5>
+                <p class="payment-card-highlight">2 scheduled instalments</p>
+                <ul>
+                  <li><strong>Registration Fee:</strong> Pay the applicable registration fee at the time of registration.</li>
+                  <li><strong>Remaining Programme Fee:</strong> Pay the programme fee in two instalments, as per the applicable fee schedule mentioned for the programme.</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </div>
     </div>
   </section>
 
@@ -405,23 +469,23 @@
       <div class="container">
         <div class="highlights__grid">
           <article class="highlight-card">
-            <img src="images/Capa_1.svg" alt="" class="highlight-card__icon" width="61" height="61" />
+            <img src="/assets/shared/images/Capa_1.svg" alt="" class="highlight-card__icon" width="61" height="61" />
             <p><strong>Capstone project</strong> designed to showcase real-world problem-solving.</p>
           </article>
           <article class="highlight-card">
-            <img src="images/Layer_1-1.svg" alt="" class="highlight-card__icon" width="80" height="80" />
+            <img src="/assets/shared/images/Layer_1-1.svg" alt="" class="highlight-card__icon" width="80" height="80" />
             <p><strong>Short on-campus immersion</strong> to blend online learning with lived academic experience.</p>
           </article>
           <article class="highlight-card">
-            <img src="images/Layer_1.svg" alt="" class="highlight-card__icon" width="88" height="88" />
+            <img src="/assets/shared/images/Layer_1.svg" alt="" class="highlight-card__icon" width="88" height="88" />
             <p><strong>Strong balance</strong> of academic depth and hands-on application.</p>
           </article>
           <article class="highlight-card">
-            <img src="images/Layer_1-2.svg" alt="" class="highlight-card__icon" width="68" height="68" />
+            <img src="/assets/shared/images/Layer_1-2.svg" alt="" class="highlight-card__icon" width="68" height="68" />
             <p><strong>Curriculum built</strong> to deliver global perspectives and industry relevance.</p>
           </article>
           <article class="highlight-card">
-            <img src="images/Layer_1-3.svg" alt="" class="highlight-card__icon" width="73" height="73" />
+            <img src="/assets/shared/images/Layer_1-3.svg" alt="" class="highlight-card__icon" width="73" height="73" />
             <p><strong>Ideal mix of</strong> theory, practice, and experiential learning for future-ready professionals.</p>
           </article>
         </div>
@@ -436,7 +500,7 @@
       <div class="skills__grid">
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Layer_3.svg" alt="" width="50" height="50" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Layer_3.svg" alt="" width="50" height="50" /></div>
             <h3 class="skill-item__title">Human-Centered Design Thinking</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -444,7 +508,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Frame-2.svg" alt="" width="51" height="51" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Frame-2.svg" alt="" width="51" height="51" /></div>
             <h3 class="skill-item__title">Rapid Prototyping &amp; Experimentation</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -452,7 +516,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Solid.svg" alt="" width="58" height="58" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Solid.svg" alt="" width="58" height="58" /></div>
             <h3 class="skill-item__title">Strategic Innovation Leadership</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -460,7 +524,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Layer_1-1%20copy.svg" alt="" width="55" height="55" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Layer_1-1%20copy.svg" alt="" width="55" height="55" /></div>
             <h3 class="skill-item__title">Service &amp; Systems Design</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -468,7 +532,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Frame.svg" alt="" width="42" height="42" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Frame.svg" alt="" width="42" height="42" /></div>
             <h3 class="skill-item__title">Data-Driven Decision Making</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -476,7 +540,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Layer_1-2%20copy.svg" alt="" width="63" height="63" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Layer_1-2%20copy.svg" alt="" width="63" height="63" /></div>
             <h3 class="skill-item__title">Ethical &amp; Inclusive Innovation</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -484,7 +548,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Layer_1%20copy.svg" alt="" width="50" height="50" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Layer_1%20copy.svg" alt="" width="50" height="50" /></div>
             <h3 class="skill-item__title">Creative Confidence &amp; Resilience</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -492,7 +556,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Frame-1.svg" alt="" width="56" height="56" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Frame-1.svg" alt="" width="56" height="56" /></div>
             <h3 class="skill-item__title">Collaborative Leadership</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -500,7 +564,7 @@
         </article>
         <article class="skill-item">
           <div class="skill-item__head">
-            <div class="skill-item__icon"><img src="images/Layer_1-2%20(1).svg" alt="" width="66" height="66" /></div>
+            <div class="skill-item__icon"><img src="/assets/shared/images/Layer_1-2%20(1).svg" alt="" width="66" height="66" /></div>
             <h3 class="skill-item__title">Emerging Tech &amp; Global Insights</h3>
           </div>
           <div class="skill-item__rule" aria-hidden="true"></div>
@@ -584,57 +648,57 @@
           <div class="career__scroll">
             <div class="career__grid">
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Layer_7.svg" alt="" width="65" height="65" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Layer_7.svg" alt="" width="65" height="65" />
                 <h3 class="outcome-card__title">UX Designer / Product Designer</h3>
                 <p class="outcome-card__text">Lead end-to-end user experience and digital product creation in tech firms, consultancies, and startups, leveraging AI, systems thinking, and human-centered approaches.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Layer_1.svg" alt="" width="88" height="88" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Layer_1.svg" alt="" width="88" height="88" />
                 <h3 class="outcome-card__title">Innovation Consultant / Innovation Lead</h3>
                 <p class="outcome-card__text">Help organizations build new products, services, and business models by driving innovation workshops, labs, and strategic change sessions.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Layer_1-3.svg" alt="" width="73" height="73" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Layer_1-3.svg" alt="" width="73" height="73" />
                 <h3 class="outcome-card__title">Design Strategist / Service Designer</h3>
                 <p class="outcome-card__text">Develop customer journeys and integrated service blueprints for organizations aiming to deliver seamless, user-centered solutions across digital &amp; physical touchpoints.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Glyph.svg" alt="" width="71" height="71" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Glyph.svg" alt="" width="71" height="71" />
                 <h3 class="outcome-card__title">Digital Transformation Lead</h3>
                 <p class="outcome-card__text">Manage organizational innovation initiatives using design thinking, digital technologies, and agile methodologies to improve business processes and user experience.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Layer_1%20(1).svg" alt="" width="69" height="69" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Layer_1%20(1).svg" alt="" width="69" height="69" />
                 <h3 class="outcome-card__title">Product Manager</h3>
                 <p class="outcome-card__text">Guide product development from ideation through launch and iteration, integrating user research, rapid prototyping, and stakeholder alignment.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Solid.svg" alt="" width="58" height="58" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Solid.svg" alt="" width="58" height="58" />
                 <h3 class="outcome-card__title">Business Strategist</h3>
                 <p class="outcome-card__text">Shape business model innovation, market entry strategies, and value propositions for global and corporate clients.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Layer_3.svg" alt="" width="50" height="50" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Layer_3.svg" alt="" width="50" height="50" />
                 <h3 class="outcome-card__title">AI-Driven Experience Designer</h3>
                 <p class="outcome-card__text">Specialize in integrating AI into experience and product design, utilizing cutting-edge tools, workflows, and frameworks promoted by the JGU Programme.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Immersive_Experience.svg" alt="" width="54" height="54" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Immersive_Experience.svg" alt="" width="54" height="54" />
                 <h3 class="outcome-card__title">Design Researcher</h3>
                 <p class="outcome-card__text">Conduct advanced research for leading tech and innovation firms, using mixed methods to uncover user insights for new products and services.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Frame-1.svg" alt="" width="56" height="56" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Frame-1.svg" alt="" width="56" height="56" />
                 <h3 class="outcome-card__title">Leadership Roles</h3>
                 <p class="outcome-card__text">Accelerate into management positions such as Head of Product, Chief Innovation Officer, or Customer Experience Director.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Capa_1.svg" alt="" width="61" height="61" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Capa_1.svg" alt="" width="61" height="61" />
                 <h3 class="outcome-card__title">Entrepreneur / Startup Founder</h3>
                 <p class="outcome-card__text">Launch and scale ventures based on advanced design, tech integration, and problem-solving approaches fostered by the Programme.</p>
               </article>
               <article class="outcome-card">
-                <img class="outcome-card__icon" src="images/Layer_1-2%20(1).svg" alt="" width="65" height="65" />
+                <img class="outcome-card__icon" src="/assets/shared/images/Layer_1-2%20(1).svg" alt="" width="65" height="65" />
                 <h3 class="outcome-card__title">Global Opportunities</h3>
                 <p class="outcome-card__text">Work across top global brands, design agencies, tech giants, and social innovation NGOs, backed by JGU&rsquo;s international reputation, hands-on mentorship, and portfolio-building with real industry projects.</p>
               </article>
@@ -764,7 +828,7 @@
       <div class="accreditations__backdrop">
         <div class="accreditations__campus">
           <img
-            src="images/bg picture.png"
+            src="/assets/shared/images/bg picture.png"
             alt="JGU campus landscape"
             class="accreditations__campus-photo"
             loading="lazy"
@@ -775,7 +839,7 @@
         <article class="accreditation-card accreditation-card--side">
           <div class="accreditation-card__media">
             <img
-              src="images/image 18.png"
+              src="/assets/shared/images/image 18.png"
               alt="Top 150 Under 50 Globally — QS Young University Rankings 2022"
               loading="lazy"
             />
@@ -784,7 +848,7 @@
         <article class="accreditation-card accreditation-card--side">
           <div class="accreditation-card__media">
             <img
-              src="images/image 20.png"
+              src="/assets/shared/images/image 20.png"
               alt="Institution of Eminence by the Ministry of Education, Government of India"
               loading="lazy"
             />
@@ -793,7 +857,7 @@
         <article class="accreditation-card accreditation-card--center">
           <div class="accreditation-card__media">
             <img
-              src="images/3.png"
+              src="/assets/shared/images/3.png"
               alt="JGU Makes History in Global Rankings — India&rsquo;s No. 1 Ranked University"
               loading="lazy"
             />
@@ -802,7 +866,7 @@
         <article class="accreditation-card accreditation-card--side">
           <div class="accreditation-card__media">
             <img
-              src="images/4.png"
+              src="/assets/shared/images/4.png"
               alt="Ranked No. 1 Private University in India — QS World University Rankings 2021&ndash;2023"
               loading="lazy"
             />
@@ -811,7 +875,7 @@
         <article class="accreditation-card accreditation-card--side">
           <div class="accreditation-card__media">
             <img
-              src="images/5.png"
+              src="/assets/shared/images/5.png"
               alt="Ranked No. 1 Globally for Online Learning — THE 2024"
               loading="lazy"
             />
@@ -907,41 +971,7 @@
     </div>
   </footer>
 
-  <!-- Bootstrap 4 runtime (jQuery required by Bootstrap 4) -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-
-  <script src="js/benefits-slider.js?v=20260662" defer></script>
-  <script src="js/faculty-slider.js?v=20260674" defer></script>
-  <script src="js/script.js"></script>
-
-  <!-- NoPaperForms: iframe embed widget -->
-  <script type="text/javascript">
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = "https://widgets.in8.nopaperforms.com/emwgts.js";
-    document.body.appendChild(s);
-  </script>
-
-  <!-- NoPaperForms: popup widget (ENROLL NOW / Learn More buttons) -->
-  <script src="https://in8cdn.npfs.co/js/widget/npfwpopup.js"></script>
-  <script>
-    (function () {
-      if (typeof NpfWidgetsInit !== 'function') {
-        return;
-      }
-      window.npfW0185dd0a8a9025344c251fc96b76a370 = new NpfWidgetsInit({
-        widgetId: '0185dd0a8a9025344c251fc96b76a370',
-        baseurl: 'widgets.in8.nopaperforms.com',
-        formTitle: 'Enquiry Form',
-        titleColor: '#FF0033',
-        backgroundColor: '#ddd',
-        iframeHeight: '500px',
-        buttonbgColor: '#4c79dc',
-        buttonTextColor: '#FFF'
-      });
-    })();
-  </script>
+  <!-- Single combined script (sliders, FAQ accordion, NoPaperForms init) -->
+  <script src="js/script.js?v=20260709"></script>
 </body>
 </html>
