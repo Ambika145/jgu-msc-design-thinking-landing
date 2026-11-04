@@ -2457,6 +2457,10 @@ section {
   font-weight: 500;
 }
 
+.tuition-table tbody tr.total td {
+  font-weight: 800;
+}
+
 .tuition-fees-note {
   max-width: 1100px;
   margin: 1.25rem auto 0;
@@ -2685,6 +2689,15 @@ section {
     border-radius: 16px;
     background: rgba(15, 18, 80, 0.28);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+
+  .tuition-table tbody tr.total {
+    background: rgba(255, 230, 109, 0.16);
+    border-color: rgba(255, 230, 109, 0.55);
+  }
+
+  .tuition-table tbody tr.total td {
+    font-weight: 800;
   }
 
   .tuition-table tbody tr:last-child {
@@ -5663,18 +5676,24 @@ iframe {
 
 @media screen and (max-width: 480px) {
   .hero-info-inner {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .hero-info-item {
+    border-right: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+    padding: 0.55rem 0.4rem !important;
+    font-size: clamp(0.78rem, 3.2vw, 0.9rem) !important;
+  }
+
+  .hero-info-item:nth-child(2n) {
     border-right: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
-    padding: 0.5rem 0.35rem !important;
-    font-size: 0.78rem !important;
   }
 
   .hero-info-item:nth-child(5),
   .hero-info-item:last-child {
+    grid-column: 1 / -1;
+    border-right: none !important;
     border-bottom: none !important;
   }
 
@@ -6212,6 +6231,15 @@ iframe {
     border-radius: 16px !important;
     background: rgba(15, 18, 80, 0.28) !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .tuition-table tbody tr.total {
+    background: rgba(255, 230, 109, 0.16) !important;
+    border-color: rgba(255, 230, 109, 0.55) !important;
+  }
+
+  .tuition-table tbody tr.total td {
+    font-weight: 800 !important;
   }
 
   .tuition-table tbody tr:last-child {
