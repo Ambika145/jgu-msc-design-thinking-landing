@@ -1049,7 +1049,7 @@ section {
 .hero-info-item {
   flex: 1;
   color: #fff;
-  font-size: 1rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
   font-weight: 800;
   line-height: 1.35;
   padding: 0 1rem;
@@ -5241,7 +5241,7 @@ iframe {
 
   .hero-info-item {
     flex: 1 1 50% !important;
-    font-size: clamp(0.7rem, 2.6vw, 0.82rem) !important;
+    font-size: clamp(0.85rem, 3.2vw, 1rem) !important;
     padding: 0.45rem 0.35rem !important;
     line-height: 1.35;
   }
@@ -5486,7 +5486,7 @@ iframe {
     width: auto !important;
     min-width: 0;
     padding: 0.65rem 0.5rem !important;
-    font-size: clamp(0.72rem, 2.2vw, 0.88rem) !important;
+    font-size: clamp(0.88rem, 3.4vw, 1.05rem) !important;
     line-height: 1.35 !important;
     border-right: 1px solid rgba(255, 255, 255, 0.22) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
@@ -5591,7 +5591,7 @@ iframe {
 
   .hero-info-item {
     padding: 0.55rem 0.4rem !important;
-    font-size: clamp(0.68rem, 3vw, 0.8rem) !important;
+    font-size: clamp(0.85rem, 3.4vw, 1rem) !important;
   }
 
   /* What's in it for you — one card at a time on mobile */
@@ -5683,7 +5683,7 @@ iframe {
     border-right: 1px solid rgba(255, 255, 255, 0.22) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
     padding: 0.55rem 0.4rem !important;
-    font-size: clamp(0.78rem, 3.2vw, 0.9rem) !important;
+    font-size: clamp(0.92rem, 3.6vw, 1.08rem) !important;
   }
 
   .hero-info-item:nth-child(2n) {
@@ -6269,7 +6269,7 @@ iframe {
     content: attr(data-label) !important;
     color: #ffe66d !important;
     font-weight: 700 !important;
-    font-size: 0.78rem !important;
+    font-size: clamp(0.92rem, 3.6vw, 1.08rem) !important;
     line-height: 1.35 !important;
   }
 
